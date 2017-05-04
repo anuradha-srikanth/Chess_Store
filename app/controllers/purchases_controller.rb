@@ -1,4 +1,6 @@
 class PurchasesController < ApplicationController
+  authorize_resource
+  
   def index
     @purchases = Purchase.chronological.to_a
   end
