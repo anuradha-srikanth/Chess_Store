@@ -1,18 +1,19 @@
 <% unless users.nil? || users.empty? %>
-  <h5><%= role.capitalize %></h5>
+  <h5><%#= role.capitalize %></h5>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th width="300">First Name</th>
+        <th width="300">Name</th>
         <!-- <th width="100">Last Name</th> -->
-        <!-- <th width="100">Email</th> -->
+        <th width="100">Email</th>
       </tr>
     </thead>
     <tbody>
       <% users.each do |user| %>
         <tr>
-          <td><%= link_to user.username, user_path(user) %></td>
-          <!-- <td><%#= number_to_currency user.current_price %></td> -->
+          <td><%= link_to user.proper_name, user_path(user) %></td>
+          <!-- <td><%#= user.last_name %></td> -->
+          <td><%= user.email %></td>
           <!-- <td><%#= user.inventory_level %></td> -->
         </tr>
       <% end %>

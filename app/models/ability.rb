@@ -113,6 +113,13 @@ class Ability
         can :create, User
 
         can :create, School
+
+
+        #FIX THIS ONE
+        cannot :view_employees, User
+        cannot :view_customers, User
+
+
     end
 end
 end

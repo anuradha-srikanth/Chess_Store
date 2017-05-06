@@ -1,3 +1,11 @@
+<%# User do |u|
+  u.id == session[:user_id]
+end 
+@user = u
+%>
+
+
+
 <div class="contain-to-grid">
   <nav class="top-bar" data-topbar role="navigation"> 
     <section class="top-bar-section">
@@ -10,12 +18,16 @@
           <%= link_to "Items", items_path %>
           <ul class="dropdown">
             <li><%= link_to "Item List", items_path %></li>
+            <%# if @user.role? == 'admin' || @user.role? == 'manager'%>
+            <% if logged_in? && current_user.role == "admin" %>
             <li><%= link_to "Reorder List", home_path %></li>
             <li><%= link_to "Add an Item", new_item_path %></li>
+            <% end %>
           </ul>
         </li>
 
         <!-- options for purchases -->
+        <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
         <li>
           <%= link_to "Purchases", purchases_path %>
         </li>
@@ -24,18 +36,19 @@
         <li>
           <%= link_to "Prices", item_prices_path %>
         </li>
-
+        <%end%>
         <!-- options for user -->
-
-          <li class="has-dropdown">
+        <%# if can? :read, User %>
+        <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+        <li class="has-dropdown">
           <%= link_to "Users", users_path %>
           <ul class="dropdown">
-            <li><%= link_to "Employees", employee_index_path %></li>
-            <li><%= link_to "Customers", customer_index_path %></li>
+            <li><%= link_to "Employees", view_employee_index_path %></li>
+            <li><%= link_to "Customers", view_customer_index_path %></li>
             <li><%= link_to "Add an Employee", new_user_path %></li>
           </ul>
         </li>
-
+        <%end%>
 
       </ul>
 

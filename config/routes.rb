@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new', :as => :signup
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout
-  get 'employees' => 'users#employees', :as => :employee_index
-  get 'customers' => 'users#customers', :as => :customer_index
+  get 'view_employees' => 'users#view_employees', :as => :view_employee_index
+  get 'view_customers' => 'users#view_customers', :as => :view_customer_index
 
   # Set the root url
   root :to => 'home#home'  
