@@ -11,13 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @purchases.each do |purchase| %>
-        <tr>
-          <td><%= link_to purchase.item.name, item_path(purchase.item) %></td>
-          <td><%= purchase.quantity %></td>
-          <td><%= purchase.date.strftime('%m/%d/%y') %></td>
-        </tr>
-      <% end %>
+    <%= render 'list_of_purchases' %>
     </tbody>
   </table>
 <% end %>

@@ -1,0 +1,10 @@
+
+<% if @customers.empty? %>
+  <h3>There are no Customers in the system at this time</h3>
+<% else %>
+  <h3>Current Customers</h3>
+
+  <%= render partial: "current_customers", locals: {users: @customers, role: "boards"}  %>
+
+
+<% end %>

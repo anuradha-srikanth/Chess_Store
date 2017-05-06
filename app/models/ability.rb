@@ -31,80 +31,67 @@ class Ability
 
     user ||= User.new
 
-#     if user.role? :admin
-#         can :manage, :all
-#     elsif user.role? :manager
-#         can :update, Band do |band|  
-#           band.id == user.band_id
-#       end
-#       can :destroy, Band do |band|  
-#           band.id == user.band_id
-#       end
-#     elsif user.role? :shipper
-#         can :update, Band do |band|  
-#         band.id == user.band_id
-#     end
-#       elsif user.role? :customer
-#     can :update, Band do |band|  
-#         band.id == user.band_id
-#     end
-# else
-#     can :read, :all
-# end
 
+    if user.role? :admin
+        can :manage, :all
 
-if user.role? :admin
-    can :manage, :all?
+    elsif user.role? :manager
+        #can read everything
+        can :read, :all
 
-elsif user.role? :manager
-    #can read everything
-    can :read, :all
+        #can read, edit or update employee data
+        can :index, User do |this_user|
+            employees = User.employees
+            employees.include? this_user
+        end
+        can :create, User  do |this_user|
+            employees = User.employees
+            employees.include? this_user
+        end
 
-    #can read, edit or update employee data
-    can :index, User do |this_user|
-        employees = User.employees
-        employees.include? this_user
+        can :update, User do |this_user|
+            employees = User.employees
+            employees.include? this_user
+        end
 
-    can :create, User  do |this_user|
-        employees = User.employees
-        employees.include? this_user
+        #can create, edit, read items 
+        #upload pictures power?
+        can :create, Item
+        can :update, Item
+        can :destroy, Item
 
-    can :update, User do |this_user|
-        employees = User.employees
-        employees.include? this_user
+        #can read full price history, create new prices
+        can :index, ItemPrice
+        can :create, ItemPrice
 
-    #can create, edit, read items 
-    #upload pictures power?
-    can :create, Item
-    can :update, Item
-    can :destroy, Item
-
-    #can read full price history, create new prices
-    can :index, ItemPrice
-    can :create, ItemPrice
-
-    #adjust inventory levels by adding purchases to system
-    can :create, Purchase
-
+        #adjust inventory levels by adding purchases to system
+        can :create, Purchase
 
 
     elsif user.role? :shipper
-    # they can update their own profile
-    can :update, User do |u|  
-        u.id == user.id
+        # they can update their own profile
+        can :update, User do |u|  
+            u.id == user.id
+        end
 
-        can :read, 
+        #can read information about items but not price history
+        can :index, Item
+
+
+    elsif user.role? :customer
+        can :update, User do |u|  
+            u.id == user.id
+        end
+        # they can create new orders for themselves
+        can :create, Order
+
+        can :destroy, Order do |this_order|
+            unshipped_orders = Order.not_shipped; 
+            unshipped_orders.include? this_order.id
+        end
+
+    else
+        can :read, :all
     end
-
-elsif user.role? :customer
-  can :update, User do |u|  
-    u.id == user.id
-# they can create new orders for themselves
-can :create, Order
-
-can :destroy, Order do |this_order|
-    unshipped_orders = Order.not_shipped; 
-    unshipped_orders.include? this_order.id
-
 end
 end

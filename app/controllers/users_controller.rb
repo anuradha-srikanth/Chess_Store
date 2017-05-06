@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
 	def new
 		@user = User.new
 	end
@@ -31,6 +30,14 @@ class UsersController < ApplicationController
     	else
     		render action: 'edit'
     	end
+    end
+
+    def employees
+        @employees = User.employees.alphabetical.paginate(:page => params[:page]).per_page(10)
+    end
+
+    def customers
+        @customers = User.customers.alphabetical.paginate(:page => params[:page]).per_page(10)
     end
 
     private

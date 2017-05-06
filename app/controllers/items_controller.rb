@@ -30,9 +30,11 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     
     if @item.save
-      redirect_to item_path(@item), notice: "Successfully created #{@item.name}."
+      format.html { redirect_to item_path(@item), notice: "Successfully created #{@item.name}." }
+      format.json { render action: 'show', status: :created, item: @item}
     else
-      render action: 'new'
+      format.html { render action: 'new' }
+      format.json { render json: @town.errors, status: :unprocessable_entity }
     end
   end
 

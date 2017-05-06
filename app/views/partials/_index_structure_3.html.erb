@@ -11,7 +11,7 @@
   </div>
   <div class="small-3 columns">
     <!-- Add a button for new instances of object -->
-    <%= link_to(eval("new_#{model_name}_path"), class: "button radius", id: "new_#{model_name}_link") do %>
+    <%= link_to(new_purchase_path, class: "button radius", id: "new_purchase_link", remote: true) do %>
       <!-- <i class="fa fa-plus"></i> -->
       &nbsp;Add a New <%= model_name.capitalize %>
     <% end %>

@@ -10,6 +10,9 @@ module Populator
       @ben     = FactoryGirl.create(:user, first_name: "Ben", last_name: "Junker", username: "bjunker")
       @melanie = FactoryGirl.create(:user, first_name: "Melanie", last_name: "Freeman", username: "melfree")
 
+
+      @anu = FactoryGirl.create(:user, first_name: "Anu", last_name: "Srikanth", username: "asrikant", email: "asrikant@andrew.cmu.edu")
+
       40.times do |i|
         fn = Faker::Name.first_name
         ln = Faker::Name.last_name

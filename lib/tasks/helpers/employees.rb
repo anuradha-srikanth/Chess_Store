@@ -7,6 +7,10 @@ module Populator
       @shipper1 = FactoryGirl.create(:user, first_name: "Connor", last_name: "Hanley", username: "chanley", role: "shipper")
       @manager2 = FactoryGirl.create(:user, first_name: "Becca", last_name: "Kern", username: "bkern", role: "manager")
       @shipper2 = FactoryGirl.create(:user, first_name: "Sarah", last_name: "Reyes-Franco", username: "srf", role: "shipper")
+    
+      @manager3 = FactoryGirl.create(:user, first_name: "Mick", last_name: "Huang", username: "mhuang", role: "manager", email: "mhu@gmail.com")
+      @shipper3 = FactoryGirl.create(:user, first_name: "Divya", last_name: "Mohan", username: "drmohan", role: "shipper", email: "drmohan@gmail.com")
+
     end
   end
 end
