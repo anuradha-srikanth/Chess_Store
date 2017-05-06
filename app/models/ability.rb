@@ -77,6 +77,11 @@ class Ability
         #can read information about items but not price history
         can :index, Item
 
+        can :index, Order do |this_order|
+            unshipped_orders = Order.not_shipped; 
+            unshipped_orders.include? this_order.id
+        end
+
 
     elsif user.role? :customer
         can :update, User do |u|  
@@ -90,8 +95,24 @@ class Ability
             unshipped_orders.include? this_order.id
         end
 
+        #can read info about items but not inventory level or 
+        #price history
+        can :read, Item
+
+        #read own previous orders
+        can :read, Order do |this_order|
+            this_order.user_id == user.id
+        end 
+
+        #can add school
+        can :create, School
+
     else
-        can :read, :all
+        can :read, Item
+
+        can :create, User
+
+        can :create, School
     end
 end
 end
