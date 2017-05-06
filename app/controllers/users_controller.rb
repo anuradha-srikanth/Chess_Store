@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
+        #@user.schools.build
 	end
 
 	def create
@@ -47,7 +48,8 @@ class UsersController < ApplicationController
     end
 
     def user_params
-    	params.require(:user).permit(:first_name, :last_name, :email, :role, :password, :password_confirmation, :active)
+    	params.require(:user).permit(:first_name, :last_name, :email, :role, :password, :password_confirmation, :active, 
+            schools_attributes: [:name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade, :active])
     end 
 
 

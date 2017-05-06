@@ -77,6 +77,8 @@ class Ability
         #can read information about items but not price history
         can :index, Item
 
+        can :read, Item
+
         can :index, Order do |this_order|
             unshipped_orders = Order.not_shipped; 
             unshipped_orders.include? this_order.id

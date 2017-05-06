@@ -1,3 +1,7 @@
 
 <%# render :partial => 'general_home' %>
+<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper" )%>
 <%= render :partial => 'reorder_list' %>
+
+<%= render :partial => 'pending_orders' %>
+<%end%>

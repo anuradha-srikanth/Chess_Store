@@ -1,0 +1,24 @@
+<h5>Pending Orders</h5>
+
+<% unless @pending_order.nil? || @pending_order.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="250">Date</th>
+        <th width="125">Grand Total</th>
+        <th width="125">Reorder Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pending_order.each do |order| %>
+        <tr>
+          <td><%= link_to order.date, order_path(item) %></td>
+          <td><%= order.grand_total %></td>
+          <td><%= order.school_id %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no pending orders at this time.</p>
+<% end %>
