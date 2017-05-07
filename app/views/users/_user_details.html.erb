@@ -26,3 +26,59 @@
   <b>Active</b>: <%= @user.active ? 'Yes' : 'No' %>
 </p>
 
+
+<h5>My Unshipped Orders</h5>
+
+<% unless @unshipped_orders.nil? || @unshipped_orders.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="250">Id</th>
+        <th width="125">Date</th>
+        <th width="125">Grand Total</th>
+        <th width="125">School</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @unshipped_orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.id, order_path(order) %></td>
+          <td><%= order.date.strftime('%m/%d/%y') %></td>
+          <td><%= number_to_currency order.grand_total %></td>
+          <td><%= School.find_by(id: order.school_id)['name']%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no unshipped orders at this time.</p>
+<% end %>
+
+<h5>My Past Orders</h5>
+
+<% unless @past_orders.nil? || @past_orders.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="250">Id</th>
+        <th width="125">Date</th>
+        <th width="125">Grand Total</th>
+        <th width="125">School</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @past_orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.id, order_path(order) %></td>
+          <td><%= order.date.strftime('%m/%d/%y') %></td>
+          <td><%= number_to_currency order.grand_total %></td>
+          <td><%= School.find_by(id: order.school_id)['name']%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no unshipped orders at this time.</p>
+<% end %>
+
+

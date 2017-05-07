@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
     def show
         @user = current_user
+        # @school = School.
+        @unshipped_orders = Order.not_shipped.where(user_id = @user.id)
+        @past_orders = Order.all.where(user_id = @user.id)
     end
 
     def edit

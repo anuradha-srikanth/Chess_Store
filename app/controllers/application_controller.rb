@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   # just show a flash message instead of full CanCan exception
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "You are not authorized to take this action.  Go away or I shall taunt you a second time."
+    flash[:error] = "You are not authorized to take this action."
     redirect_to home_path
   end
 
@@ -21,9 +21,20 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user
   end
+
   helper_method :logged_in?
 
   def check_login
     redirect_to login_url, alert: "You need to log in to view this page." if current_user.nil?
   end
+
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
+  end
+  helper_method :current_order
+
 end

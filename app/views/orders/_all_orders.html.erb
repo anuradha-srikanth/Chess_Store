@@ -1,0 +1,18 @@
+<% if @active_orders.empty? %>
+  <h4>No orders at this time.</h4>
+<% else %>
+  <h4>Recent Purchases</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="225">Order Id</th>
+        <th width="150">Date</th>
+        <th width="150">Grand Total</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%= render 'list_of_orders' %>
+    </tbody>
+  </table>
+<% end %>
+<p>&nbsp;</p>

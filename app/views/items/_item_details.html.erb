@@ -38,3 +38,8 @@
 <p>
   <b>Active</b>: <%= @item.active ? 'Yes' : 'No' %>
 </p>
+
+<%= link_to(new_purchase_path, class: "button radius", id: "new_purchase_link", remote: true) do %>
+<!-- <i class="fa fa-plus"></i> -->
+&nbsp;Add a New <%= model_name.capitalize %>
+<% end %>

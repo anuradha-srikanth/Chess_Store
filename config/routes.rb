@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   resources :sessions
   resources :orders
   resources :schools
+  resources :carts
+
+  # resources :carts do
+  #   post :add, on: :collection
+  # end
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home

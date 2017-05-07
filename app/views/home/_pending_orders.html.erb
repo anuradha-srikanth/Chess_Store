@@ -4,7 +4,8 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th width="250">Date</th>
+        <th width="250">Id</th>
+        <th width="125">Date</th>
         <th width="125">Grand Total</th>
         <th width="125">Reorder Level</th>
       </tr>
@@ -12,8 +13,9 @@
     <tbody>
       <% @pending_order.each do |order| %>
         <tr>
-          <td><%= link_to order.date, order_path(item) %></td>
-          <td><%= order.grand_total %></td>
+          <td><%= link_to order.id, order_path(order) %></td>
+          <td><%= order.date.strftime('%m/%d/%y')  %></td>
+          <td><%= number_to_currency order.grand_total %></td>
           <td><%= order.school_id %></td>
         </tr>
       <% end %>

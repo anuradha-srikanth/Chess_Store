@@ -29,6 +29,10 @@
         <li>
           <%= link_to "Prices", item_prices_path %>
         </li>
+
+        <li>
+          <%= link_to "Orders", orders_path %>
+        </li>
         <%end%>
         <!-- options for user -->
         <%# if can? :read, User %>
@@ -49,6 +53,7 @@
             <%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %>
             <ul class="dropdown">
               <li><%= link_to "Edit settings", edit_user_path(current_user) %></li>
+              <li><%= link_to "My Cart", cart_path(current_user) %></li>
               <li><%= link_to "Logout", logout_path %></li>
             </ul>
           </li>

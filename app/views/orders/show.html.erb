@@ -1,0 +1,9 @@
+<% unless @order_items.empty? %>
+    <h3>Order Items</h3>
+    <ul>
+      <% @order_items.each do |item| %>
+        <li><%= link_to item.name, item_path(item) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
