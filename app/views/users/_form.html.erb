@@ -1,4 +1,4 @@
-<%= simple_nested_form_for @user, html: { class: 'form-horizontal', multipart: true } do |f| %>
+<%= simple_form_for @user, html: { class: 'form-horizontal', multipart: true } do |f| %>
 <fieldset>
   <legend><%= controller.action_name.capitalize %> User </legend>
 
@@ -11,19 +11,6 @@
   <%= f.input :password, input_html: {class: "avg"} %>
   <%= f.input :password_confirmation, input_html: {class: "avg"} %>
 
-  <%#= f.input :school_id, input_html: {class: "avg"}, :collection => School.alphabetical.to_a, :prompt => true%>
-  <div class="span5">
-    <legend>Schools for this User</legend>
-    <div id="user_schools">
-      <%= f.simple_fields_for :schools do |s| %>
-      <%= f.input :name, input_html: {class: "avg"} %>
-      <%end%>
-      <p>
-        <br /><%= f.link_to_add("Add School", :schools, :class => 'button tiny') %>
-      </p>
-    </div> 
-  </div>
-  
 <div class="form-actions">
   <%= f.submit nil, :class => 'button radius' %>
   <%= link_to 'Cancel', purchases_path, :class => 'button alert radius' %>

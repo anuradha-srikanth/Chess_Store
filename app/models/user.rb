@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # Relationships
   has_many :orders
   has_many :schools
-  accepts_nested_attributes_for :schools, reject_if: lambda { |school| school[:name].blank? }, allow_destroy: true
+  # accepts_nested_attributes_for :schools, reject_if: lambda { |school| school[:name].blank? }, allow_destroy: true
 
   # Scopes   scope :alphabetical,  -> { order(:last_name).order(:first_name) }
 scope :active,        -> { where(active: true) }   

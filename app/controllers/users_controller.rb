@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     	end
     end
 
+    def show
+        @user = current_user
+    end
+
     def edit
     	@user = current_user
     end
@@ -33,12 +37,13 @@ class UsersController < ApplicationController
     	end
     end
 
+
     def view_employees
-        @employees = User.employees.alphabetical.paginate(:page => params[:page]).per_page(10)
+        @employees = User.employees.paginate(:page => params[:page]).per_page(10)
     end
 
     def view_customers
-        @customers = User.customers.alphabetical.paginate(:page => params[:page]).per_page(10)
+        @customers = User.customers.paginate(:page => params[:page]).per_page(10)
     end
 
     private
@@ -48,8 +53,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-    	params.require(:user).permit(:first_name, :last_name, :email, :role, :password, :password_confirmation, :active, 
-            schools_attributes: [:name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade, :active])
+    	params.require(:user).permit(:first_name, :last_name, :email, :role, :password, :password_confirmation, :active)
     end 
 
 
