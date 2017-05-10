@@ -1,26 +1,32 @@
 <h5>Pending Orders</h5>
 
 <% unless @pending_order.nil? || @pending_order.empty? %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="250">Id</th>
-        <th width="125">Date</th>
-        <th width="125">Grand Total</th>
-        <th width="125">Reorder Level</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @pending_order.each do |order| %>
-        <tr>
-          <td><%= link_to order.id, order_path(order) %></td>
-          <td><%= order.date.strftime('%m/%d/%y')  %></td>
-          <td><%= number_to_currency order.grand_total %></td>
-          <td><%= order.school_id %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="250">Id</th>
+      <th width="125">Date</th>
+      <th width="125">Grand Total</th>
+      <th width="125">Reorder Level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pending_order.each do |order| %>
+    <tr>
+      <td><%= link_to order.id, order_path(order) %></td>
+      <td><%= order.date.strftime('%m/%d/%y')  %></td>
+      <td><%= number_to_currency order.grand_total %></td>
+      <td><%= order.school_id %></td>
+      <div class="tl_controls">
+        <%= link_to(image_tag("icons/check_green.gif", border: 0), complete_path(order.id), method: :patch) %>
+        &nbsp;
+        <%= link_to(image_tag("icons/close.gif", border: 0), order_path(order), method: :delete, data: {confirm: "Are you sure you want to permanently delete this task"}) %>
+      </div>
+    </tr>
+    
+    <% end %>
+  </tbody>
+</table>
 <% else %>
-  <p>There are no pending orders at this time.</p>
+<p>There are no pending orders at this time.</p>
 <% end %>

@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
 
   def show
     # get the price history for this item
+
     @price_history = @item.item_prices.chronological.to_a
     # everyone sees similar items in the sidebar
     @similar_items = Item.for_category(@item.category).active.alphabetical.to_a - [@item]
@@ -30,11 +31,14 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     
     if @item.save
-      format.html { redirect_to item_path(@item), notice: "Successfully created #{@item.name}." }
-      format.json { render action: 'show', status: :created, item: @item}
+      respond_to do |format|
+        format.html { redirect_to item_path(@item), notice: "Successfully created #{@item.name}." }
+        format.json { render action: 'show', status: :created, item: @item}
+        format.js
+      end 
     else
       format.html { render action: 'new' }
-      format.json { render json: @town.errors, status: :unprocessable_entity }
+      format.json { render json: @item.errors, status: :unprocessable_entity }
     end
   end
 
@@ -57,7 +61,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :color, :category, :weight, :inventory_level, :reorder_level, :active)
+    params.require(:item).permit(:name, :description, :color, :category, :weight, :inventory_level, :reorder_level, :active, :photo)
   end
-  
+
 end

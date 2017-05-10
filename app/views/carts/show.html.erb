@@ -14,10 +14,12 @@
     <div id="order_items_list">
   <% @order_items.each do |item| %>
   <tr>
-    <td><%= link_to item.name, item_path(item) %></td>
+    <td><%= item.item_id %></td>
     <td><%= item.quantity %></td>
     <!-- <td><%#= purchase.date.strftime('%m/%d/%y') %></td> -->
   </tr>
+  <div link_to(class: "button radius", new_order_path(@order_items)> Checkout </div>
+  <%= f.submit nil, :class => 'button radius' %>
   <% end %>
 </div>
     </tbody>

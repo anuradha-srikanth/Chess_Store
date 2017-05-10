@@ -10,12 +10,13 @@
   </div>
 </div>
 
+<!-- Add item to cart button -->
 
-    <%#= link_to(eval("items_path"), class: 'button radius') do %>
-    <div id="add_to_cart_button" class='button radius'>
+    <%= link_to(add_item_path(@item.id), class: 'button radius') do %>
+    <!-- <div id="add_to_cart_button" class='button radius'> -->
       &nbsp;Add Item to Cart
-      </div>
-    <%# end %>
+      <!-- </div> -->
+    <% end %>
     &nbsp;&nbsp;
 
 <!-- Add buttons to list all, edit project or destroy object -->

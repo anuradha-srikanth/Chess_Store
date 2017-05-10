@@ -5,7 +5,7 @@
 
 		<%= render 'list_of_prices' %>
 
-		<%= link_to(new_item_price_path(item_id: @item.id), id: 'new_price_link', class: 'button tiny radius', remote: true) do %>
+		<%= link_to(new_item_price_path(item_id: @item.id), class: 'button tiny radius new_price_link', remote: true) do %>
 		Change Price
 		<% end %>
 	</div>

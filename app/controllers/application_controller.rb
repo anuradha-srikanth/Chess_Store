@@ -28,13 +28,13 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, alert: "You need to log in to view this page." if current_user.nil?
   end
 
-  def current_order
-    if !session[:order_id].nil?
-      Order.find(session[:order_id])
-    else
-      Order.new
-    end
-  end
-  helper_method :current_order
+  # def current_order
+  #   if !session[:cart].nil?
+  #     Cart.find(session[:cart])
+  #   else
+  #     Cart.new
+  #   end
+  # end
+  # helper_method :current_order
 
 end

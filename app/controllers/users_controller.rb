@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 		if @user.save
     		# if saved to database
     		session[:user_id] = @user.id
+            #session[:cart] =  ||= Hash.new
     		flash[:notice] = "Changed the user params #{@user.name}."
     		#@item = @item_price.item
     		#redirect_to item_path(@item_price.item) #items_path #@item_price.item.items_path # go to show item page

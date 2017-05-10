@@ -14,10 +14,16 @@ class PurchasesController < ApplicationController
     @purchase.date = Date.current
     
     if @purchase.save
-      format.html { redirect_to purchases_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}." }
-      format.json { render action: 'index', status: :created, location: @purchase }
-      format.js { render action: 'index', status: :created, location: @purchase }
-    else
+      respond_to do |format|
+      # format.html { redirect_to @purchase, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}." }
+      # format.json { render action: 'index', status: :created, location: @purchase }
+      # format.js { render action: 'index', status: :created, location: @purchase }
+      format.html { redirect_to @purchase, notice: "Successfully added" }
+      @purchases = Purchase.chronological.to_a
+      # format.js { render action: 'index', status: :created, location: @purchase }
+      format.js
+    end
+  else
       # render action: 'new'
       format.html { render action: 'new' }
       format.json { render json: @purchases.errors, status: :unprocessable_entity }

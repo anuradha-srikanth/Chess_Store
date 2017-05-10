@@ -1,4 +1,4 @@
-$('#price_history').remove();
-$('#new_price_link').show();
+$('#new_item_price').remove();
+$('.new_price_link').show();
 
-$('#prices_list').replaceWith('<%= j render("towns/list_of_prices") %>');
+$('#price_history').replaceWith('<%= j render("items/price_history") %>');
