@@ -1,0 +1,61 @@
+<% if @all_orders.empty? %>
+<h4>You have no orders at this time.</h4>
+<% else %>
+<h4>Active Orders</h4>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="150">Date</th>
+      <th width="225">School</th>
+      <th width="150">Grand Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <div id="order_list">
+    <% @all_orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.date.strftime('%m/%d/%y'), view_order_path(order)  %></td>
+        <td><%= School.find(order.school.id).name%></td>
+        <td><%= number_to_currency order.grand_total %></td>
+      </tr>
+      <% end %>
+    </div>
+  </tbody>
+</table>
+<% end %>
+<p>&nbsp;</p>
+
+
+<% if @unshipped.empty? %>
+<h4>You have no unshipped orders at this time.</h4>
+<% else %>
+<h4>Active Orders</h4>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="150">Date</th>
+      <th width="225">School</th>
+      <th width="150">Grand Total</th>
+      <th width="150">Cancel Order</th>
+    </tr>
+  </thead>
+  <tbody>
+    <div id="order_list">
+    <% @unshipped.each do |order| %>
+      <tr>
+        <td><%= link_to order.date.strftime('%m/%d/%y'), view_order_path(order)  %></td>
+        <td><%= School.find(order.school.id).name%></td>
+        <td><%= number_to_currency order.grand_total %></td>
+        <td><%= link_to(remove_item_path(item.item_id), class: 'button tiny radius') do %>
+          &nbsp;<%= "Remove" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </div>
+  </tbody>
+</table>
+<% end %>
+<p>&nbsp;</p>
+
+

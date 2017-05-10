@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   get 'remove_item/:id' => 'carts#remove_item', :as => :remove_item
   get 'checkout' => 'carts#checkout', :as => :checkout
   patch 'complete_order_item/:id' => 'order_items#complete_order_item', :as => :complete_order_item
-
-
+  get 'my_orders' => 'orders#my_orders', :as => :my_orders
+  get 'view_order/:id' => 'orders#view_order', :as => :view_order
   # Set the root url
   root :to => 'home#home'  
 

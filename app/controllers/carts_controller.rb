@@ -73,9 +73,9 @@ def checkout
   redirect_to "/orders/" + @order.id
 end
 
-def destroy
-  session[:cart] = nil
-end
+# def destroy
+#   session[:cart] = nil
+# end
 
 
 

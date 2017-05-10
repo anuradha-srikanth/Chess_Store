@@ -6,7 +6,7 @@
 <!-- <p>Below is information on your projects and incomplete tasks for those projects:</p> -->
 <% else %>
 
-
+<%= render :partial => 'general_home' %>
 <%end%>
 
 
@@ -15,3 +15,48 @@
 
 <%= render :partial => 'pending_orders' %>
 <%end%>
+
+
+<% if logged_in? && (current_user.role == "admin") %>
+
+<h5> Summary </h5>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th width="300"> Metric </th>
+			<th width="100"> Measure </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td> Total Sales </td>
+			<td> <% @total = 0 %>
+				<% Order.all.each do |o| @total += o.grand_total %>
+				<%end%>
+				<%= number_to_currency @total %>
+			</td>
+		</tr>
+		<tr>
+			<td> Total number of employees </td>
+			<td>
+				<% @total = 0 %>
+				<% User.employees.all.each do |o| @total += 1 %>
+				<%end%>
+				<%= @total %>
+
+			</td>
+		</tr>
+		<tr> <td> Total number of customers </td>
+			<td> 
+				<% @total = 0 %>
+				<% User.customers.all.each do |o| @total += 1 %>
+				<%end%>
+				<%= @total %>
+
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+<% end %>
+

@@ -2,12 +2,13 @@
 <% if @order_items.empty? %>
 <h4>There are no Items in this Order</h4>
 <% else %>
-<h4>Items</h4>
+<h4>Ordered Items</h4>
 <table class="table table-striped">
 	<thead>
 		<tr>
 			<th width="225">Item</th>
 			<th width="150">Quantity</th>
+			<th width="150">Subtotal</th>
 			<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
 			<th width="150">Mark as Shipped</th>
 
@@ -18,8 +19,9 @@
 		<div id="order_items_list">
 			<% @order_items.each do |item| %>
 			<tr>
-				<td><%= item.item_id %></td>
+				<td><%= Item.where(id: item.item_id).first.name %></td>
 				<td><%= item.quantity %></td>
+				<td><%= number_to_currency(item.item.current_price*item.quantity) %></td>
 				<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
 				<td>
 					<%= link_to(image_tag("icons/check_green.gif", border: 0), complete_order_item_path(item.id), method: :patch) %>

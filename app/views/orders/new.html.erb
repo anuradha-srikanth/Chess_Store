@@ -1,10 +1,12 @@
 <%= simple_form_for @order, html: { class: 'form-horizontal', multipart: true } do |f| %>
 <fieldset>
-<legend><%= controller.action_name.capitalize %> Order </legend>
+	<legend><%= controller.action_name.capitalize %> Order </legend>
 
-	<%= f.input :school_id, input_html: {class: "avg"} %>
-	<%#= f.input :description, input_html: { :rows => 4, class: "avg" } %>
-	 <%#= f.input :order_id, as: :hidden, input_html: { value: params[:item_id] } %>
+	<%= f.input :school_id, collection: School.active.to_a, input_html: {class: "avg"} %>
+	<%= f.input :date,  input_html: {class: "avg" ,value: Date.current}%>
+	<%= f.input :user_id, input_html: {class: "avg", value: params[:user_id]}%>
+	<%= f.input :grand_total,  input_html: {class: "avg", value: params[:grand_total]}%>
+	<%#= f.input :order_id, as: :hidden, input_html: { value: params[:item_id] } %>
 
 
 	<div class="form-actions">
