@@ -1,22 +1,26 @@
 class SchoolsController < ApplicationController
+    before_action :set_school, only: [:show, :edit, :update, :destroy]
 
+    def index
+      @active_schools = School.active.alphabetical.to_a
+  end
 
-	def index
-		@active_schools = School.active.alphabetical.to_a
-	end
+  def show
+        # @active_schools = School.active.alphabetical.to_a
+    end
 
-	def new
-		@school = School.new
+    def new
+      @school = School.new
         #@user.schools.build
-	end
+    end
 
-	def create
-		@school = School.new(school_params)
-		if @user.save
+    def create
+      @school = School.new(school_params)
+      if @user.save
     		# if saved to database
     		#session[:user_id] = @user.id
     		flash[:notice] = "Changed the school params #{@school.name}."
-    		redirect_to school_path
+    		redirect_to school_path(@school)
     	else
     		# return to the 'new' form
     		render action: 'new'
@@ -37,9 +41,11 @@ class SchoolsController < ApplicationController
     # end
 
 
-	private
-
-	def school_params
-		params.require(:school).permit(:name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade, :active )
-	end 
+    private
+    def set_school
+        @school = School.find(params[:id])
+    end
+    def school_params
+      params.require(:school).permit(:name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade, :active )
+  end 
 end

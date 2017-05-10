@@ -1,9 +1,31 @@
-<% unless @order_items.empty? %>
-    <h3>Order Items</h3>
-    <ul>
-      <% @order_items.each do |i| %>
-        <li><%= link_to i.item.name, item_path(i.item) %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
+
+<% if @order_items.empty? %>
+<h4>You have not added anything to your cart</h4>
+<% else %>
+<h4>Items</h4>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th width="225">Item</th>
+			<th width="150">Quantity</th>
+			<th width="150">Remove From Cart</th>
+		</tr>
+	</thead>
+	<tbody>
+		<div id="order_items_list">
+			<% @order_items.each do |item| %>
+			<tr>
+				<td><%= item.item_id %></td>
+				<td><%= item.quantity %></td>
+
+				<td>
+					<%= link_to(image_tag("icons/check_green.gif", border: 0), complete_order_item_path(item.id), method: :patch) %>
+					<%#= link_to(image_tag("icons/close.gif", border: 0), order_item_path(order_id), method: :delete, data: {confirm: "Are you sure you want to permanently delete this task"}) %>
+				</td>
+			</tr>			
+			<% end %>
+		</div>
+	</tbody>
+</table>
+<%end%>

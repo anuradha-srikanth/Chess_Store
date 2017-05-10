@@ -1,17 +1,19 @@
 class UsersController < ApplicationController
 
-	def new
-		@user = User.new
-        #@user.schools.build
-	end
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-	def create
-		@user = User.new(user_params)
-		if @user.save
+    def new
+      @user = User.new
+        #@user.schools.build
+    end
+
+    def create
+      @user = User.new(user_params)
+      if @user.save
     		# if saved to database
     		session[:user_id] = @user.id
             #session[:cart] =  ||= Hash.new
-    		flash[:notice] = "Changed the user params #{@user.name}."
+            flash[:notice] = "Changed the user params #{@user.name}."
     		#@item = @item_price.item
     		#redirect_to item_path(@item_price.item) #items_path #@item_price.item.items_path # go to show item page
     		redirect_to home_path
@@ -22,14 +24,14 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = current_user
+        # @user = current_user
         # @school = School.
-        @unshipped_orders = Order.not_shipped.where(user_id = @user.id)
-        @past_orders = Order.all.where(user_id = @user.id)
+        @unshipped_orders = Order.not_shipped.where(user_id: @user.id).all
+        @past_orders = Order.all.where(user_id: @user.id).all
     end
 
     def edit
-    	@user = current_user
+    	# @user = current_user
     end
 
     def update

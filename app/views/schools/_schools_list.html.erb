@@ -1,0 +1,26 @@
+<% if @active_schools.empty? %>
+<h4>No Schools in the system at this time.</h4>
+<% else %>
+<h4>Active Schools</h4>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="225">Name</th>
+      <th width="150">City</th>
+      <!-- <th width="150">Grand Total</th> -->
+    </tr>
+  </thead>
+  <tbody>
+  <div id="schools">
+      <% @active_schools.each do |school| %>
+      <tr>
+        <td><%= link_to school.name, school_path(school) %></td>
+        <td><%= school.city %></td>
+        <!-- <td><%#= number_to_currency order.grand_total %></td> -->
+      </tr>
+      <% end %>
+    </div>
+  </tbody>
+</table>
+<% end %>
+<p>&nbsp;</p>

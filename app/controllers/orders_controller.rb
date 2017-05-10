@@ -33,7 +33,20 @@ class OrdersController < ApplicationController
 	end
 
 	def show
-		@order_items = @order.order_items.all
+		@order_items = @order.order_items.unshipped.all
+	end
+
+	def edit
+
+	end
+
+
+	def update
+		if @order.update(order_params)
+			redirect_to order_path(@order), notice: "Successfully updated order."
+		else
+			render action: 'edit'
+		end
 	end
 
 	def add_from_cart(order)
