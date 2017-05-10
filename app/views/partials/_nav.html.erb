@@ -33,11 +33,18 @@
         <li>
           <%= link_to "Orders", orders_path %>
         </li>
-
-        <li>
-          <%= link_to "Schools", schools_path %>
-        </li>
         <%end%>
+        
+        <% if logged_in? %>
+        <li class="has-dropdown">
+          <%= link_to "Schools", schools_path %>
+          <ul class="dropdown">
+
+            <li><%= link_to "Add your School", new_school_path %></li>
+          </ul>
+        </li>
+        <% end %>
+
         <!-- options for user -->
         <%# if can? :read, User %>
         <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
@@ -52,8 +59,8 @@
         <%end%>
 
         <% if logged_in? %>
-          <ul class="right">
-            <li class="has-dropdown">
+        <ul class="right">
+          <li class="has-dropdown">
             <%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %>
             <ul class="dropdown">
               <li><%= link_to "Edit settings", edit_user_path(current_user) %></li>
@@ -61,10 +68,10 @@
               <li><%= link_to "Logout", logout_path %></li>
             </ul>
           </li>
-        <% end %>
+          <% end %>
 
-      </ul>
+        </ul>
 
-    </section>
-  </nav>
-</div>
+      </section>
+    </nav>
+  </div>

@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
 			info = {item_id: item_id, quantity: quantity, order_id: order.id}
 			OrderItem.create(info)
 		end
-		redirect_to "/orders/" + order.id
+		# redirect_to "/orders/" + @order.id
 	end
 
 	private

@@ -11,13 +11,14 @@
 </div>
 
 <!-- Add item to cart button -->
-
+    <% if logged_in? && @item.active == true%>
     <%= link_to(add_item_path(@item.id), class: 'button radius') do %>
     <!-- <div id="add_to_cart_button" class='button radius'> -->
       &nbsp;Add Item to Cart
       <!-- </div> -->
     <% end %>
     &nbsp;&nbsp;
+    <%end%>
 
 <!-- Add buttons to list all, edit project or destroy object -->
 <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager") %>

@@ -1,21 +1,26 @@
 <% unless items.nil? || items.empty? %>
-  <h5><%= item_type.capitalize %></h5>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="300">Name</th>
-        <th width="100">Price</th>
-        <th width="100">Inventory</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% items.each do |item| %>
-        <tr>
-          <td><%= link_to item.name, item_path(item) %></td>
-          <td><%= number_to_currency item.current_price %></td>
-          <td><%= item.inventory_level %></td>
-        </tr>
+<h5><%= item_type.capitalize %></h5>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="300">Name</th>
+      <th width="100">Price</th>
+      <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
+      <th width="100">Inventory</th>
+      <%end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.each do |item| %>
+    <tr>
+      <td><%= link_to item.name, item_path(item) %></td>
+      <td><%= number_to_currency item.current_price %></td>
+
+      <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
+      <td><%= item.inventory_level %></td>
       <% end %>
-    </tbody>
-  </table>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>

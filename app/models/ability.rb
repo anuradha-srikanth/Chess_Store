@@ -79,11 +79,24 @@ class Ability
 
         can :read, Item
 
-        can :index, Order do |this_order|
-            unshipped_orders = Order.not_shipped; 
-            unshipped_orders.include? this_order.id
-        end
+        # can :index, Order do |this_order|
+        #     unshipped_orders = Order.not_shipped; 
+        #     unshipped_orders.include? this_order.id
+        # end
 
+        # can :read, Order do |this_order|
+        #     unshipped_orders = Order.not_shipped; 
+        #     unshipped_orders.include? this_order.id
+        # end
+
+        # can :update, Order do |this_order|
+        #     unshipped_orders = Order.not_shipped; 
+        #     unshipped_orders.include? this_order.id
+        # end 
+
+        can :index, Order
+        can :read, Order
+        can :update, Order
 
     elsif user.role? :customer
         can :update, User do |u|  

@@ -16,10 +16,10 @@ class SchoolsController < ApplicationController
 
     def create
       @school = School.new(school_params)
-      if @user.save
+      if @school.save
     		# if saved to database
     		#session[:user_id] = @user.id
-    		flash[:notice] = "Changed the school params #{@school.name}."
+    		flash[:notice] = "Successfully added #{@school.name} to system."
     		redirect_to school_path(@school)
     	else
     		# return to the 'new' form
