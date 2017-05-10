@@ -3,8 +3,7 @@
 	<div class="panel clearfix">
 		<h3>Price History</h3>
 
-		<%= render 'list_of_prices' %>
-
+		<%= render 'items/list_of_prices' %>
 		<%= link_to(new_item_price_path(item_id: @item.id), class: 'button tiny radius new_price_link', remote: true) do %>
 		Change Price
 		<% end %>

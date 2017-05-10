@@ -58,6 +58,8 @@
         </li>
         <%end%>
 
+
+
         <% if logged_in? %>
         <ul class="right">
           <li class="has-dropdown">
@@ -67,12 +69,15 @@
               <li><%= link_to "My Cart", cart_path(current_user) %></li>
               <li><%= link_to "My Orders", my_orders_path %></li>
               <li><%= link_to "Logout", logout_path %></li>
-            </ul>
           </li>
-          <% end %>
-
         </ul>
+        <% else %>
+        <li>
+          <%= link_to "Login", login_path %>
+        </li>
+        <% end %>
+      </ul>
 
-      </section>
-    </nav>
-  </div>
+    </section>
+  </nav>
+</div>

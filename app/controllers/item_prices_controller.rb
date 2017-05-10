@@ -13,6 +13,8 @@ class ItemPricesController < ApplicationController
   def create
     @item_price = ItemPrice.new(item_price_params)
     @item_price.start_date = Date.current
+    @item = @item_price.item
+    @price_history = @item_price.item.item_prices.all
 
     if @item_price.save
       respond_to do |format|
@@ -25,7 +27,7 @@ class ItemPricesController < ApplicationController
       # render action: 'new'
       format.html { render action: 'new' }
       # format.json { render json: @item_price.errors, status: :unprocessable_entity }
-      format.js
+      # format.js
     end 
   end
 

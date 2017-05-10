@@ -1,4 +1,4 @@
-<%= simple_form_for @item_price, html: { class: 'form-horizontal'} , remote: true do |f| %>
+<%= simple_form_for @item_price, html: { class: 'form-horizontal small_form'} ,remote: true do |f| %>
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Price</legend>
 
@@ -12,7 +12,8 @@
     <div class="form-actions">
       <%= f.submit nil, :class => 'button radius' %>
       <%#= link_to 'Cancel', item_path(params[:item_id]), :class => 'button alert radius' %>
-      <%= link_to 'Cancel', item_path(params[:item_id]), class: 'button alert radius' %>
+
+      <%= link_to 'Cancel', items_path(params[:item_id]), class: 'button alert radius' %>
     </div>
   </fieldset>
 <% end %>
