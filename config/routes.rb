@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get 'view_employees' => 'users#view_employees', :as => :view_employee_index
   get 'view_customers' => 'users#view_customers', :as => :view_customer_index
   get 'add_item/:id' => 'carts#add_item', :as => :add_item
+  get 'remove_item/:id' => 'carts#remove_item', :as => :remove_item
+  get 'checkout' => 'carts#checkout', :as => :checkout
   # Set the root url
   root :to => 'home#home'  
 

@@ -1,28 +1,44 @@
 <% if @order_items.empty? %>
-  <h4>You have not added anything to your cart</h4>
+<h4>You have not added anything to your cart</h4>
 <% else %>
-  <h4>Items</h4>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="225">Item</th>
-        <th width="150">Quantity</th>
-        <!-- <th width="150">Date</th> -->
-      </tr>
-    </thead>
-    <tbody>
+<h4>Items</h4>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="225">Item</th>
+      <th width="150">Quantity</th>
+      <th width="150">Remove From Cart</th>
+    </tr>
+  </thead>
+  <tbody>
     <div id="order_items_list">
-  <% @order_items.each do |item| %>
-  <tr>
-    <td><%= item.item_id %></td>
-    <td><%= item.quantity %></td>
-    <!-- <td><%#= purchase.date.strftime('%m/%d/%y') %></td> -->
-  </tr>
-  <div link_to(class: "button radius", new_order_path(@order_items)> Checkout </div>
-  <%= f.submit nil, :class => 'button radius' %>
-  <% end %>
-</div>
+      <% @order_items.each do |item| %>
+      <tr>
+        <td><%= item.item_id %></td>
+        <td><%= item.quantity %></td>
+        <td><%= link_to(remove_item_path(item.item_id), class: 'button tiny radius') do %>
+          &nbsp;<%= "Remove" %>
+          <% end %>
+          <!-- <td><%#= purchase.date.strftime('%m/%d/%y') %></td> -->
+        </tr>
+        <%#= f.submit nil, :class => 'button radius' %>
+        <% end %>
+      </div>
     </tbody>
   </table>
-<% end %>
-<p>&nbsp;</p>
+
+  <p> Grand Total: </p>
+  <%= number_to_currency(@total) %> </p>
+
+
+
+  <%= link_to(new_order_path, class: 'button radius') do %>
+  &nbsp;<%= "Checkout" %>
+  <% end %>
+
+  <%= link_to(cart_path, method: :delete, class: 'button radius') do %>
+  <%= 'Delete' %>
+
+  <% end %>
+
+  <% end %>

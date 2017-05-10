@@ -1,8 +1,8 @@
 <% unless @order_items.empty? %>
     <h3>Order Items</h3>
     <ul>
-      <% @order_items.each do |item| %>
-        <li><%= link_to item.name, item_path(item) %></li>
+      <% @order_items.each do |i| %>
+        <li><%= link_to i.item.name, item_path(i.item) %></li>
       <% end %>
     </ul>
   </div>
