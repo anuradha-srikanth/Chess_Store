@@ -1,0 +1,88 @@
+
+<div class="contain-to-grid">
+  <nav class="top-bar" data-topbar role="navigation"> 
+    <section class="top-bar-section">
+      <ul class="left">
+        <!-- link to home -->
+        <li><%= link_to "Home", home_path %></li>
+
+        <!-- options for items -->
+        <li class="has-dropdown">
+          <%= link_to "Items", items_path %>
+          <ul class="dropdown">
+            <li><%= link_to "Item List", items_path %></li>
+            <%# if @user.role? == 'admin' || @user.role? == 'manager'%>
+            <% if logged_in? && current_user.role == "admin" %>
+            <li><%= link_to "Reorder List", home_path %></li>
+            <li><%= link_to "Add an Item", new_item_path %></li>
+            <% end %>
+          </ul>
+        </li>
+
+        <!-- options for purchases -->
+        <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+        <li>
+          <%= link_to "Purchases", purchases_path %>
+        </li>
+
+        <!-- options for prices -->
+        <li>
+          <%= link_to "Prices", item_prices_path %>
+        </li>
+
+        <li>
+          <%= link_to "Orders", orders_path %>
+        </li>
+        <%end%>
+        
+        <% if logged_in? %>
+        <li class="has-dropdown">
+          <%= link_to "Schools", schools_path %>
+          <ul class="dropdown">
+
+            <li><%= link_to "Add your School", new_school_path %></li>
+          </ul>
+        </li>
+        <% end %>
+
+        <!-- options for user -->
+        <%# if can? :read, User %>
+        <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+        <li class="has-dropdown">
+          <%= link_to "Users", users_path %>
+          <ul class="dropdown">
+            <li><%= link_to "Employees", view_employee_index_path %></li>
+            <li><%= link_to "Customers", view_customer_index_path %></li>
+            <li><%= link_to "Add an Employee", new_user_path %></li>
+          </ul>
+        </li>
+        <%end%>
+
+
+
+        <% if logged_in? %>
+        <ul class="right">
+          <li class="has-dropdown">
+            <%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %>
+            <ul class="dropdown">
+              <li><%= link_to "Edit settings", edit_user_path(current_user) %></li>
+              <li><%= link_to "My Cart", cart_path(current_user) %></li>
+              <li><%= link_to "My Orders", my_orders_path %></li>
+              <li><%= link_to "Logout", logout_path %></li>
+            </li>
+          </ul>
+          <% else %>
+          <li>
+            <%= link_to "Login", login_path %>
+          </li>
+          <% end %>
+
+          <li>
+            <%= render :partial => "partials/cart" %>
+          </li>
+
+        </ul>
+
+      </section>
+    </nav>
+  </div>

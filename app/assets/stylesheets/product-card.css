@@ -15,6 +15,7 @@
   box-shadow: none;
   overflow: hidden;
   color: #0a0a0a;
+  height: 500px;
 }
 
 .card-user-profile > :last-child {
@@ -81,6 +82,7 @@
   margin-bottom: 0;
   font-weight: 300;
   font-size: 1.5rem;
+  /*height: 3rem;*/
 }
 
 .card-user-profile-button {
@@ -91,12 +93,20 @@
 }
 
 .card-user-profile-button + .card-user-profile-button {
-  margin-left: 1rem;
+  /*margin-left: 1rem;*/
+  margin-left: 0.3rem;
 }
 
 .card-user-profile-info {
   font-size: 0.875rem;
   letter-spacing: 1px;
   opacity: 0.8;
+  height: 8.00rem;
+  /*width: 10rem;*/
+  /*white-space: normal;*/
+  overflow: hidden;
+  /*text-overflow: ellipsis;*/
+  text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
 }
 

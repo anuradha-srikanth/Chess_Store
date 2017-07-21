@@ -1,83 +1,79 @@
 
-<div class="contain-to-grid">
-  <nav class="top-bar" data-topbar role="navigation"> 
-    <section class="top-bar-section">
-      <ul class="left">
-        <!-- link to home -->
-        <li><%= link_to "Home", home_path %></li>
 
-        <!-- options for items -->
-        <li class="has-dropdown">
-          <%= link_to "Items", items_path %>
-          <ul class="dropdown">
-            <li><%= link_to "Item List", items_path %></li>
-            <%# if @user.role? == 'admin' || @user.role? == 'manager'%>
-            <% if logged_in? && current_user.role == "admin" %>
-            <li><%= link_to "Reorder List", home_path %></li>
-            <li><%= link_to "Add an Item", new_item_path %></li>
-            <% end %>
-          </ul>
-        </li>
+ <div class="multilevel-offcanvas off-canvas position-right" id="offCanvasRight" data-off-canvas>
 
-        <!-- options for purchases -->
-        <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
-        <li>
-          <%= link_to "Purchases", purchases_path %>
-        </li>
+  <ul class="vertical menu" data-accordion-menu>
+    <li><a href="#">SERVICES</a>
+      <ul class="menu vertical nested">
+        <li><a href="#">Brand</a></li>
+        <li><a href="#">Web Apps</a></li>
+        <li><a href="#">Mobile Apps</a></li>
+       </ul>
+    </li>
+    <li><a href="#">PRODUCTS</a>
+      <ul class="menu vertical nested">
+        <li><a href="#">Product 1</a></li>
+        <li><a href="#">Product 2</a></li>
+        <li><a href="#">Product 3</a></li>
+       </ul>header
+     </li>
+    <li><a href="#">CITIES</a>
+      <ul class="menu vertical nested">
+        <li><a href="#">London</a></li>
+        <li><a href="#">New York</a></li>
+        <li><a href="#">Paris</a></li>
+       </ul>
+    </li>
+   </ul>
+  <ul class="vertical menu">
+    <li class="off-canvas-menu-item"><a href="#">Tour</a></li>
+    <li><a href="#">Login</a></li>
+    <li><a href="#">Register</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">Support</a></li>
+  </ul>
+  <ul class="vertical menu">
+     <li><a href="#">Journal</a></li>
+     <li><a href="#">FAQ</a></li>
+     <li><a href="#">Terms & Conditions</a></li>
+     <li><a href="#">Careers</a></li>
+     <li><a href="#">Students</a></li>
+   </ul>
+  <ul class="menu simple social-links">
+    <li><a href="#" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="#" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+    <li><a href="#" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
+    <li><a href="#" target="_blank"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+  </ul>
+</div>
 
-        <!-- options for prices -->
-        <li>
-          <%= link_to "Prices", item_prices_path %>
-        </li>
-
-        <li>
-          <%= link_to "Orders", orders_path %>
-        </li>
-        <%end%>
-        
-        <% if logged_in? %>
-        <li class="has-dropdown">
-          <%= link_to "Schools", schools_path %>
-          <ul class="dropdown">
-
-            <li><%= link_to "Add your School", new_school_path %></li>
-          </ul>
-        </li>
-        <% end %>
-
-        <!-- options for user -->
-        <%# if can? :read, User %>
-        <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
-        <li class="has-dropdown">
-          <%= link_to "Users", users_path %>
-          <ul class="dropdown">
-            <li><%= link_to "Employees", view_employee_index_path %></li>
-            <li><%= link_to "Customers", view_customer_index_path %></li>
-            <li><%= link_to "Add an Employee", new_user_path %></li>
-          </ul>
-        </li>
-        <%end%>
-
-
-
-        <% if logged_in? %>
-        <ul class="right">
-          <li class="has-dropdown">
-            <%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %>
-            <ul class="dropdown">
-              <li><%= link_to "Edit settings", edit_user_path(current_user) %></li>
-              <li><%= link_to "My Cart", cart_path(current_user) %></li>
-              <li><%= link_to "My Orders", my_orders_path %></li>
-              <li><%= link_to "Logout", logout_path %></li>
+<div class="off-canvas-content" data-off-canvas-content>
+  <div class="nav-bar">
+      <div class="nav-bar-left">
+        <a class="nav-bar-logo"><img class="logo" src="http://placehold.it/150x30"></a>
+      </div>
+      <div class="nav-bar-right">
+        <ul class="menu">
+          <li class="hide-for-small-only"><a href="#">TOUR</a></li>
+          <li class="hide-for-small-only"><a href="#">LOGIN</a></li>
+          <li>
+          <li>
+            <button class="offcanvas-trigger" type="button" data-open="offCanvasRight">
+              <span class="offcanvas-trigger-text hide-for-small-only">Menu</span>
+              <div class="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+              </div>
+            </button>
           </li>
         </ul>
-        <% else %>
-        <li>
-          <%= link_to "Login", login_path %>
-        </li>
-        <% end %>
-      </ul>
+    </div>
+  </div>
+  <!-- <div class="body-info">
+    <h4> Multilevel Off-Canvas </h4>
+    <a class="button disabled" href="#">Watch Video (coming soon)</a>
+   </div>
+ </div>
 
-    </section>
-  </nav>
-</div>
+ -->

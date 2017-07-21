@@ -15,11 +15,15 @@
   </head>
 
   <body>
-    <div id="title_area">
-      <%= link_to image_tag('banner.png'), home_path %>
-    </div>
-    <%= render :partial => "partials/nav" %>
-    
+<!--     <div id="title_area">
+      <%#= link_to image_tag('banner.png'), home_path %>
+    </div> -->
+
+<%= render :partial => "partials/nav1" %>
+    <!-- <section class="main-section"> -->
+      <!-- content goes here -->
+
+        <%= render :partial => "partials/header" %>
     <div class="row">
       <div class="small-12 columns" id="main_content">
         <%= render :partial => "partials/flash" %>
@@ -27,6 +31,12 @@
       </div>
     </div>
 
+    <!-- </section> -->
+
+  <!-- <a class="exit-off-canvas"></a> -->
+
+  <!-- </div> -->
+<!-- </div> -->
 
 
 

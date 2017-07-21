@@ -1,0 +1,11 @@
+.shopping-cart-button {
+	padding: 1rem;
+	background-color: $primary-color;
+}
+.shopping-cart-button:hover {
+	background-color: darken($primary-color, 10%)
+}
+
+.shopping-cart-button i {
+	margin-right: 0.5rem;
+}

@@ -1,26 +1,63 @@
+
+<br>
 <% unless items.nil? || items.empty? %>
 <h5><%= item_type.capitalize %></h5>
-<table class="table table-striped">
+<!-- <div class="row"> -->
+<!-- <div class="row small-up-4 medium-up-6 large-up-8">  -->
+<!-- <table class="table table-striped">
   <thead>
     <tr>
       <th width="300">Name</th>
       <th width="100">Price</th>
-      <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
+      <% #if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
       <th width="100">Inventory</th>
-      <%end %>
+      <%#end %>
     </tr>
   </thead>
   <tbody>
-    <% items.each do |item| %>
+    <%#items.each do |item| %>
     <tr>
-      <td><%= link_to item.name, item_path(item) %></td>
-      <td><%= number_to_currency item.current_price %></td>
+      <td><%#= link_to item.name, item_path(item) %></td>
+      <td><%#= number_to_currency item.current_price %></td>
 
-      <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
-      <td><%= item.inventory_level %></td>
-      <% end %>
+      <%# if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
+      <td><%#= item.inventory_level %></td>
+      <% #end %>
     </tr>
-    <% end %>
+    <% #end %>
   </tbody>
-</table>
+</table> -->
+
+<%items.each do |item| %>
+
+<div class="small-4 columns">
+<!-- <div class="column column-block"> -->
+ <div class="card-user-profile">
+   <% if !(item.photo_url.nil?) %>
+   <p><%= image_tag item.photo_url %></p>
+   <%else%>
+   <%= image_tag 'img_not_available.png' %>
+   <% end %>
+   <!-- <img class="card-user-profile-img" src="https://images.pexels.com/photos/5439/earth-space.jpg?h=350&auto=compress&cs=tinysrgb" alt="picture of space" /> -->
+   <div class="card-user-profile-content card-section">
+    <div class="card-user-profile-avatar">
+      <img src="https://pbs.twimg.com/profile_images/422887689612820482/sZtHMJu5.png" alt="picture of yeti" />
+    </div>
+    <p class="card-user-profile-name"><%= link_to item.name, item_path(item) %></p>
+    <p class="card-user-profile-status">Price: <%= number_to_currency item.current_price %> </p>
+    <p class="card-user-profile-info"> <%= item.description %> </p>
+    <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
+    <p class="card-user-profile-status">Inventory: <%= item.inventory_level %></p>
+     <%end%>
+   </div>
+
+<!--    <div class="card-user-profile-actions">
+    <a href="#" class="card-user-profile-button button hollow">Follow</a>
+    <a href="#" class="card-user-profile-button button hollow secondary">More Info</a>
+  </div> -->
+</div>
+<!-- </div> -->
+</div>
+
+<% end %>
 <% end %>

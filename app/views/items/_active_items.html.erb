@@ -1,75 +1,22 @@
 
 <% if @boards.empty? && @pieces.empty? && @clocks.empty? && @supplies.empty? %>
-  <h3>There are no items in the system at this time</h3>
+<h3>There are no items in the system at this time</h3>
 <% else %>
-  <h3>Available Items at the Chess Warehouse</h3>
-
-  <%= render partial: "current_items", locals: {items: @boards, item_type: "boards"}  %>
-
-  <%= render partial: "current_items", locals: {items: @pieces, item_type: "pieces"} %>
-
-  <%= render partial: "current_items", locals: {items: @clocks, item_type: "clocks"} %>
-
-  <%= render partial: "current_items", locals: {items: @supplies, item_type: "supplies"} %>
-
-
+<h3>Available Items at the Chess Warehouse</h3>
 <div class="row">
-  <div class="small-4 large-4 column">
- <div class="card-user-profile">
-  <img class="card-user-profile-img" src="https://images.pexels.com/photos/5439/earth-space.jpg?h=350&auto=compress&cs=tinysrgb" alt="picture of space" />
-  <div class="card-user-profile-content card-section">
-    <div class="card-user-profile-avatar">
-      <img src="https://pbs.twimg.com/profile_images/422887689612820482/sZtHMJu5.png" alt="picture of yeti" />
-    </div>
-    <p class="card-user-profile-name">Abominable Snowman</p>
-    <p class="card-user-profile-status">Yeti Web Designer</p>
-    <p class="card-user-profile-info">The Yeti, once better known as the Abominable Snowman, is a mysterious bipedal creature said to live in the mountains of Asia. It sometimes leaves tracks in snow, but is also said to dwell below the Himalayan snow line.</p>
-  </div>
-
-  <div class="card-user-profile-actions">
-    <a href="#" class="card-user-profile-button button hollow">Follow</a>
-    <a href="#" class="card-user-profile-button button hollow secondary">More Info</a>
-  </div>
+	<%= render partial: "current_items", locals: {items: @boards, item_type: "boards"}  %>
 </div>
+<div class="row">
+<br />
+	<%= render partial: "current_items", locals: {items: @pieces, item_type: "pieces"} %>
 </div>
-<div class="small-4 large-4 column">
- <div class="card-user-profile">
-  <img class="card-user-profile-img" src="https://images.pexels.com/photos/5439/earth-space.jpg?h=350&auto=compress&cs=tinysrgb" alt="picture of space" />
-  <div class="card-user-profile-content card-section">
-    <div class="card-user-profile-avatar">
-      <img src="https://pbs.twimg.com/profile_images/422887689612820482/sZtHMJu5.png" alt="picture of yeti" />
-    </div>
-    <p class="card-user-profile-name">Abominable Snowman</p>
-    <p class="card-user-profile-status">Yeti Web Designer</p>
-    <p class="card-user-profile-info">The Yeti, once better known as the Abominable Snowman, is a mysterious bipedal creature said to live in the mountains of Asia. It sometimes leaves tracks in snow, but is also said to dwell below the Himalayan snow line.</p>
-  </div>
-
-  <div class="card-user-profile-actions">
-    <a href="#" class="card-user-profile-button button hollow">Follow</a>
-    <a href="#" class="card-user-profile-button button hollow secondary">More Info</a>
-  </div>
+<div class="row">
+<br />
+	<%= render partial: "current_items", locals: {items: @clocks, item_type: "clocks"} %>
 </div>
-</div>
-
- 
- <div class="small-4 large-4 column">
-  <div class="card-user-profile">
-  <img class="card-user-profile-img" src="https://images.pexels.com/photos/5439/earth-space.jpg?h=350&auto=compress&cs=tinysrgb" alt="picture of space" />
-  <div class="card-user-profile-content card-section">
-    <div class="card-user-profile-avatar">
-      <img src="https://pbs.twimg.com/profile_images/422887689612820482/sZtHMJu5.png" alt="picture of yeti" />
-    </div>
-    <p class="card-user-profile-name">Abominable Snowman</p>
-    <p class="card-user-profile-status">Yeti Web Designer</p>
-    <p class="card-user-profile-info">The Yeti, once better known as the Abominable Snowman, is a mysterious bipedal creature said to live in the mountains of Asia. It sometimes leaves tracks in snow, but is also said to dwell below the Himalayan snow line.</p>
-  </div>
-
-  <div class="card-user-profile-actions">
-    <a href="#" class="card-user-profile-button button hollow">Follow</a>
-    <a href="#" class="card-user-profile-button button hollow secondary">More Info</a>
-  </div>
-</div>
-</div>
+<div class="row">
+<br />
+	<%= render partial: "current_items", locals: {items: @supplies, item_type: "supplies"} %>
 </div>
 
 <!-- 
@@ -131,5 +78,5 @@
 </div>
 </div>
 </div>
- -->
+-->
 <% end %>
