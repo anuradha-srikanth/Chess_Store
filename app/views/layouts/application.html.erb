@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <title><%#= content_for?(:title) ? yield(:title) : "foundation-rails" %></title> -->
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Lato" rel="stylesheet">
+  <!-- <title><%#= content_for?(:title) ? yield(:title) : "foundation-rails" %></title> -->
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Lato" rel="stylesheet">
 
-    <title>Chess Warehouse :: <%= controller.controller_name.capitalize %></title>
-    <%= stylesheet_link_tag    "application" %>
+  <title>Chess Warehouse :: <%= controller.controller_name.capitalize %></title>
+  <%#= stylesheet_link_tag    "normalize" %>
+  <%= stylesheet_link_tag    "application" %>
+<!--     <%#= stylesheet_link_tag    "cart" %>
+    <%#= stylesheet_link_tag    "component" %>
+    <%#= stylesheet_link_tag    "demo" %>
+    <%#= stylesheet_link_tag    "foundation" %>
+    <%#= stylesheet_link_tag    "icons" %>
+    <%#= stylesheet_link_tag    "nav" %>
+    <%#= stylesheet_link_tag    "product-card" %> -->
+
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application" %>
+    <!-- <%#= javascript_include_tag "application", 'data-turbolinks-track' => true %> -->
     <%= csrf_meta_tags %>
   </head>
 
@@ -19,26 +29,19 @@
       <%#= link_to image_tag('banner.png'), home_path %>
     </div> -->
 
-<%= render :partial => "partials/nav4" %>
-    <!-- <section class="main-section"> -->
-      <!-- content goes here -->
+    <%= render :partial => "partials/nav4" %>
 
-        <!--<%#= render :partial => "partials/header" %>-->
+
+    <!--<%#= render :partial => "partials/header" %>-->
+
+
+
     <div class="row">
       <div class="small-12 columns" id="main_content">
         <%= render :partial => "partials/flash" %>
         <%= yield %>
       </div>
     </div>
-
-    <!-- </section> -->
-
-  <!-- <a class="exit-off-canvas"></a> -->
-
-  <!-- </div> -->
-<!-- </div> -->
-
-
 
 
 
@@ -47,9 +50,10 @@
         <%= render partial: 'partials/footer' %>
       </div>
     </footer> 
-    <%= javascript_include_tag "application" %>
+
+    
   </body>
-</html>
+  </html>
 
 
 

@@ -1,103 +1,148 @@
 
-	<div class="container">
-		<!-- Push Wrapper -->
-		<div class="mp-pusher" id="mp-pusher">
+<div class="container">
+	<!-- Push Wrapper -->
+	<div class="mp-pusher" id="mp-pusher">
 
-			<!-- mp-menu -->
-			<nav id="mp-menu" class="mp-menu">
-				<div class="mp-level">
-					<h2 class="icon icon-world">All Categories</h2>
-					<ul>
-						<li class="icon icon-arrow-left">
-							<a class="icon icon-display" href="#">Items</a>
-							<div class="mp-level">
-								<h2 class="icon icon-display">Items</h2>
-								<a class="mp-back" href="#">back</a>
-								<ul>
-									<li class="icon icon-arrow-left">
-										<a class="icon icon-phone" href="#">Browse Items</a>
-										<div class="mp-level">
-											<h2>Browse Items</h2>
-											<a class="mp-back" href="#">back</a>
-											<ul>
-												<li><a href="#">Boards</a></li>
-												<li><a href="#">Pieces</a></li>
-												<li><a href="#">Clocks</a></li>
-												<li><a href="#">Supplies</a></li>
-												<li><a href="#">All Items</a></li>
-											</ul>
-										</div>
-									</li>
-										
-										<li class="icon icon-arrow-left">
-											<a class="icon icon-camera" href="#">Add item</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="icon icon-arrow-left">
-								<a class="icon icon-news" href="#">Orders</a>
-								<div class="mp-level">
-									<h2 class="icon icon-news">Orders</h2>
-									<a class="mp-back" href="#">back</a>
-									<ul>
-										<li><a href="#">Order History</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="icon icon-arrow-left">
-								<a class="icon icon-shop" href="#">Schools</a>
-								<div class="mp-level">
-									<h2 class="icon icon-shop">Schools</h2>
-									<a class="mp-back" href="#">back</a>
-									<ul>
-										<li class="icon icon-arrow-left">
-											<a class="icon icon-t-shirt" href="#">View Schools</a>
-										</li>
-										<li>
-											<a class="icon icon-diamond" href="#">Add School</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="icon icon-arrow-left">
-								<a class="icon icon-display" href="#">Users</a>
-								<div class="mp-level">
-									<h2 class="icon icon-display">Users</h2>
-									<a class="mp-back" href="#">back</a>
-									<ul>
-										<li><a class="icon icon-wallet" href="#">Customers</a></li>
-										<li><a class="icon icon-wallet" href="#">Employees</a></li>
-										<li><a class="icon icon-wallet" href="#">All Users</a></li>
-										<li class="icon icon-arrow-left">
-											<a class="icon icon-camera" href="#">Add item</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li><a class="icon icon-wallet" href="#">My Profile</a></li>
-						</ul>
+		<!-- mp-menu -->
+		<nav id="mp-menu" class="mp-menu">
+			<div class="mp-level">
+				<h2 class="icon icon-world">All Categories</h2>
+				<ul>
+					<li class="icon icon-arrow-left">
+						<a class="icon icon-display" href="#">Items</a>
+						<div class="mp-level">
+							<h2 class="icon icon-display">Items</h2>
+							<a class="mp-back" href="#">back</a>
+							<ul>
+								<li class="icon icon-arrow-left">
+									<a class="icon icon-phone" href="#">Browse Items</a>
+									<div class="mp-level">
+										<h2>Browse Items</h2>
+										<a class="mp-back" href="#">back</a>
+										<ul>
+											<li><a href="#">Boards</a></li>
+											<li><a href="#">Pieces</a></li>
+											<li><a href="#">Clocks</a></li>
+											<li><a href="#">Supplies</a></li>
+											<li><%= link_to "All Items", items_path %></li>
+											<!-- <li><a href="#">All Items</a></li> -->
+										</ul>
+									</div>
+								</li>
+								<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+								<li>
+									<%= link_to "Purchases", purchases_path %>
+								</li>
+								<%end%>
+								<% if logged_in? && current_user.role == "admin" %>
+								<li class="icon icon-arrow-left">
+									<a class="icon icon-camera" href="#">Reorder List</a>
+								</li>
 
-					</div>
-				</nav>
-				<!-- /mp-menu -->
-
-				<div class="scroller"><!-- this is for emulating position fixed of the nav -->
-					<div class="scroller-inner">
-						<div class="content clearfix">
-							<div class="block block-40 clearfix">
-								<p><a href="#" id="trigger" class="menu-trigger">Menu</a></p>
-							</div>
+								<li class="icon icon-arrow-left">
+									<a class="icon icon-camera" href="#">Add item</a>
+								</li>
+								<% end %>
+							</ul>
 						</div>
-					</div><!-- /scroller-inner -->
-				</div><!-- /scroller -->
+					</li>
+					<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+					<li class="icon icon-arrow-left">
+						<a class="icon icon-news" href="#">Orders</a>
+						<div class="mp-level">
+							<h2 class="icon icon-news">Orders</h2>
+							<a class="mp-back" href="#">back</a>
+							<ul>
+								<li><%= link_to "Orders", orders_path %></li>
+							</ul>
+						</div>
+					</li>
+					<% end %>
 
-			</div><!-- /pusher -->
-		</div><!-- /container -->
-		<script src="js/classie.js"></script>
-		<script src="js/mlpushmenu.js"></script>
-		<script>
-		new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
-		</script>
+					<% if logged_in? %>
+					<li class="icon icon-arrow-left">
+						<a class="icon icon-shop" href="#">Schools</a>
+						<div class="mp-level">
+							<h2 class="icon icon-shop">Schools</h2>
+							<a class="mp-back" href="#">back</a>
+							<ul>
+								<li class="icon icon-arrow-left">
+									<!-- 		<a class="icon icon-t-shirt" href="#">View Schools</a> -->
+									<%= link_to "Schools", schools_path %>
+								</li>
+								<li>
+									<%= link_to "Add your School", new_school_path %>
+									<!-- <a class="icon icon-diamond" href="#">Add School</a> -->
+								</li>
+							</ul>
+						</div>
+					</li>
+					<% end %>
+					<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+					<li class="icon icon-arrow-left">
+						<a class="icon icon-display" href="#">Users</a>
+						<div class="mp-level">
+							<h2 class="icon icon-display">Users</h2>
+							<a class="mp-back" href="#">back</a>
+							<ul>
+								<li><%= link_to "Employees", view_employee_index_path %></li>
+								<li><%= link_to "Customers", view_customer_index_path %></li>
+								<!-- <li><%#= link_to "All Users", view_user_index_path %></li> -->
+								<li><%= link_to "Add an Employee", new_user_path %></li>
+<!-- 								<li class="icon icon-arrow-left">
+									<a class="icon icon-camera" href="#">Add item</a>
+								</li> -->
+							</ul>
+						</div>
+					</li>
+					<%end%>
+
+					<!-- <li><a class="icon icon-wallet" href="#">My Profile</a></li> -->
+					<% if logged_in? %>
+					<li class="icon icon-arrow-left">
+						<a class="icon icon-display" href="#">My Account</a>
+						<div class="mp-level">
+							<h2 class="icon icon-display"> <%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %> </h2>
+							<a class="mp-back" href="#">back</a>
+							<ul>
+								<li><%= link_to "Edit settings", edit_user_path(current_user) %></li>
+								<li><%= link_to "My Cart", cart_path(current_user) %></li>
+								<li><%= link_to "My Orders", my_orders_path %></li>
+								<li><%= link_to "Logout", logout_path %></li>
+<!-- 								<li class="icon icon-arrow-left">
+									<a class="icon icon-camera" href="#">Add item</a>
+								</li> -->
+							</ul>
+						</div>
+					</li>
+					<% end %>
+
+				</ul>
+
+			</div>
+		</nav>
+		<!-- /mp-menu -->
+		<!-- <div class="contain-to-grid sticky"> -->
+		<!-- <nav class="top-bar" data-topbar> -->
+		<div class="scroller" >
+			<!-- this is for emulating position fixed of the nav -->
+			<div class="scroller-inner" id="title_area">
+				<div class="content clearfix">
+					<div class="block block-40 clearfix">
+						<p><a href="#" id="trigger" class="menu-trigger">Menu</a></p>
+					</div>
+				</div>
+			</div> <!--/scroller-inner -->
+		</div><!-- /scroller -->
+		<!-- </nav> -->
+		<!-- </div> -->
+
+	</div><!-- /pusher -->
+</div><!-- /container -->
+<script src="js/classie.js"></script>
+<script src="js/mlpushmenu.js"></script>
+<script>
+new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+</script>
 <!-- 	</body>
 	</html> -->

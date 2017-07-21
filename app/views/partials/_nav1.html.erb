@@ -69,8 +69,9 @@
               <li><%= link_to "My Cart", cart_path(current_user) %></li>
               <li><%= link_to "My Orders", my_orders_path %></li>
               <li><%= link_to "Logout", logout_path %></li>
-            </li>
+            <!-- </li> -->
           </ul>
+        </li>
           <% else %>
           <li>
             <%= link_to "Login", login_path %>
