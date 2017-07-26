@@ -45,11 +45,11 @@ class UsersController < ApplicationController
 
 
     def view_employees
-        @employees = User.employees.paginate(:page => params[:page]).per_page(10)
+        @employees = User.employees.alphabetical.paginate(:page => params[:page]).per_page(10)
     end
 
     def view_customers
-        @customers = User.customers.paginate(:page => params[:page]).per_page(10)
+        @customers = User.customers.alphabetical.paginate(:page => params[:page]).per_page(10)
     end
 
     private

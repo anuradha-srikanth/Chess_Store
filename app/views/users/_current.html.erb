@@ -6,6 +6,7 @@
       People You Might Know
     </h6>
   </div>
+  <% users.each do |user| %>
   <div class="row add-people-section">
     <div class="small-12 medium-6 columns about-people">
       <div class="about-people-avatar">
@@ -13,96 +14,41 @@
       </div>
       <div class="about-people-author">
         <p class="author-name">
-          Kishore Kumar
+          <%= link_to user.proper_name, user_path(user) %>
         </p>
         <p class="author-location">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          Mumbai, India
+          <%= user.email %>
         </p>
-        <p class="author-mutual">
+        <p class="author-location">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <%= user.phone.nil? ? 'N/A' : (user.phone) %>
+        </p>
+<!--         <p class="author-mutual">
           <strong>Shahrukh Khan</strong> is a mutual friend.
         </p>
-      </div>    
-    </div>
-    <div class="small-12 medium-6 columns add-friend">
-      <div class="add-friend-action">
-        <button class="button primary small">
-          <i class="fa fa-user-plus" aria-hidden="true"></i>
-          Add Friend
-        </button>
-        <button class="button secondary small">
-          <i class="fa fa-user-times" aria-hidden="true"></i>
-          Ignore
-        </button>
-      </div>
-    </div>
+      -->      
+    </div>    
   </div>
-  <div class="row add-people-section">
-    <div class="small-12 medium-6 columns about-people">
-      <div class="about-people-avatar">
-        <img class="avatar-image" src="https://i.imgur.com/GHeazQ2.jpg" alt="Kishore Kumar">
-      </div>
-      <div class="about-people-author">
-        <p class="author-name">
-          Barack Obama
-        </p>
-        <p class="author-location">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-          Hawaii, United States
-        </p>
-        <p class="author-mutual">
-          <strong>Hilary Clinton</strong> is a mutual friend.
-        </p>
-      </div>    
+  <div class="small-12 medium-6 columns add-friend">
+    <div class="add-friend-action">
+      <button class="button primary small">
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+        Add Friend
+      </button>
+      <button class="button secondary small">
+        <i class="fa fa-user-times" aria-hidden="true"></i>
+        Ignore
+      </button>
     </div>
-    <div class="small-12 medium-6 columns add-friend">
-      <div class="add-friend-action">
-        <button class="button primary small">
-          <i class="fa fa-user-plus" aria-hidden="true"></i>
-          Add Friend
-        </button>
-        <button class="button secondary small">
-          <i class="fa fa-user-times" aria-hidden="true"></i>
-          Ignore
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="row add-people-section">
-    <div class="small-12 medium-6 columns about-people">
-      <div class="about-people-avatar">
-        <img class="avatar-image" src="https://i.imgur.com/SytPzuC.jpg" alt="Kishore Kumar">
-      </div>
-      <div class="about-people-author">
-        <p class="author-name">
-          Harry Manchanda
-        </p>
-        <p class="author-location">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-          New Delhi, India
-        </p>
-        <p class="author-mutual">
-          <strong>Rafi Benkual</strong> is a mutual friend.
-        </p>
-      </div>    
-    </div>
-    <div class="small-12 medium-6 columns add-friend">
-      <div class="add-friend-action">
-        <button class="button primary small">
-          <i class="fa fa-user-plus" aria-hidden="true"></i>
-          Add Friend
-        </button>
-        <button class="button secondary small">
-          <i class="fa fa-user-times" aria-hidden="true"></i>
-          Ignore
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="view-more-people">
-    <p class="view-more-text">
-      <a href="#" class="view-more-link">View More..</a>
-    </p>
   </div>
 </div>
+<% end %>
+<!-- <div class="view-more-people">
+  <p class="view-more-text">
+    <a href="#" class="view-more-link">View More..</a>
+  </p>
+</div> -->
+</div>
 
+<% end %>
