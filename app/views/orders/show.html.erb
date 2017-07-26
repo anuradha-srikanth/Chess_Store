@@ -6,7 +6,8 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th width="225">Item</th>
+			<th width="100">Item Id</th>
+			<th width="225">Item Name</th>
 			<th width="150">Quantity</th>
 			<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
 			<th width="150">Mark as Shipped</th>
@@ -19,6 +20,7 @@
 			<% @order_items.each do |item| %>
 			<tr>
 				<td><%= item.item_id %></td>
+				<td><%= Item.find(item.item_id).name %></td>
 				<td><%= item.quantity %></td>
 				<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
 				<td>
