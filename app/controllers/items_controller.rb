@@ -16,6 +16,8 @@ class ItemsController < ApplicationController
     # get the price history for this item
 
     @price_history = @item.item_prices.chronological.to_a
+    @manu_price_history = @item.item_prices.manufacturer.chronological.to_a
+    @wholesale_price_history = @item.item_prices.wholesale.chronological.to_a
     # everyone sees similar items in the sidebar
     @similar_items = Item.for_category(@item.category).active.alphabetical.to_a - [@item]
   end

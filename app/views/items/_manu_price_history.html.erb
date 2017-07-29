@@ -1,0 +1,16 @@
+<div id="price_history">
+	<% unless @manu_price_history.empty? %>
+	<div class="panel clearfix">
+		<h3>Manufacturer Price</h3>
+
+		<%#= render 'items/list_of_prices' %>
+		<%= render 'items/list_of_manu_prices' %>
+		<%= link_to(new_item_price_path(item_id: @item.id), class: 'button tiny radius new_price_link', remote: true) do %>
+		Change Price
+		<% end %>
+	</div>
+	<% else %>
+		No Price History Found
+	<% end %>
+</div>
+
