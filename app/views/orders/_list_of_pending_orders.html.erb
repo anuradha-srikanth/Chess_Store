@@ -1,0 +1,9 @@
+<div id="order_list">
+	<% Order.not_shipped.each do |order| %>
+	<tr>
+		<td><%= link_to School.find(order.school.id).name, order_path(order) %></td>
+		<td><%= order.date.strftime('%m/%d/%y') %></td>
+		<td><%= number_to_currency order.grand_total %></td>
+	</tr>
+	<% end %>
+</div>

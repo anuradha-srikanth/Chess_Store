@@ -4,24 +4,29 @@
   </div>
 </div>
 <div class="row">
-  <div class="small-5 columns">
   <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager") %>
+  <div class="small-5 columns">
     <%= render :partial => "manu_price_history" unless @price_history.empty?%>
-    <%= render :partial => "wholesale_price_history" unless @price_history.empty?%>
-    <%end %>
-    <%= render :partial => "similar_items" unless @similar_items.empty?%>
   </div>
+  <div class="small-5 columns">
+    <%= render :partial => "wholesale_price_history" unless @price_history.empty?%>
+  </div>
+  <%end %>
+</div>
+<div class="row">
+  <%= render :partial => "similar_items" unless @similar_items.empty?%>
 </div>
 
+
 <!-- Add item to cart button -->
-    <% if logged_in? && @item.active == true%>
-    <%= link_to(add_item_path(@item.id), class: 'button radius') do %>
-    <!-- <div id="add_to_cart_button" class='button radius'> -->
-      &nbsp;Add Item to Cart
-      <!-- </div> -->
-    <% end %>
-    &nbsp;&nbsp;
-    <%end%>
+<% if logged_in? && @item.active == true%>
+<%= link_to(add_item_path(@item.id), class: 'button radius') do %>
+<!-- <div id="add_to_cart_button" class='button radius'> -->
+&nbsp;Add Item to Cart
+<!-- </div> -->
+<% end %>
+&nbsp;&nbsp;
+<%end%>
 
 <!-- Add buttons to list all, edit project or destroy object -->
 <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager") %>
