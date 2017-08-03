@@ -15,9 +15,9 @@
 
 
 <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper" )%>
-<%= render :partial => 'reorder_list' %>
+	<%= render :partial => 'reorder_list' %>
 
-<%= render :partial => 'pending_orders' %>
+	<%= render :partial => 'pending_orders' %>
 <%end%>
 
 
@@ -190,64 +190,38 @@
 // }).on('click', function(i, row){
 // 	console.log(i, row);
 // });
-var board = [0,0,0,0,0,0,0,0,0,0,0,0];
-var clock = [0,0,0,0,0,0,0,0,0,0,0,0];
-var supply = [0,0,0,0,0,0,0,0,0,0,0,0];
-var piece = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-function month_data(mon){
-	console.log("here");
-	<% Order.all.each do |o| %>
-		console.log(o);
-		<% if (o.order_items != null) %>
-			<% o.order_items.map do |oi| %>
-				<% if (oi.item.category.downcase == 'boards') %>
-					board[mon] += <% oi.item.price_on_date(o.date) %>
-				<% elsif (oi.item.category.downcase == 'clocks') %>
-					clock[mon] += <% oi.item.price_on_date(o.date)%>
-				<% elsif (oi.item.category.downcase == 'supplies') %>
-					supply[mon] += <% oi.item.price_on_date(o.date) %>
-				<% elsif (oi.item.category.downcase == 'pieces') %>
-					piece[mon] += <% oi.item.price_on_date(o.date)%>
-				<% else %>
-					console.log("problem"); 
-				<%end%>
-			<%end%>
-		<%end%>
-	<%end%>
-}
+// var month_data = [
+//   // {"period": "2012-10", "licensed": 3407, "sorned": 660},
+//   {"period": "2011-01", "licensed": 3269, "sorned": 618, "sorned1": 6218},
+//   {"period": "2011-02", "licensed": 3351, "sorned": 629, "sorned1": 6218},
+//   {"period": "2011-03", "licensed": 3269, "sorned": 618, "sorned1": 6218},
+//   {"period": "2011-04", "licensed": 3269, "sorned": 618, "sorned1": 6218},
+//   {"period": "2011-05", "licensed": 3351, "sorned": 629, "sorned1": 6218},
+//   {"period": "2011-06", "licensed": 3269, "sorned": 618, "sorned1": 6218},
+//   {"period": "2011-07", "licensed": 3269, "sorned": 618, "sorned1": 6218},
+//   {"period": "2011-08", "licensed": 3351, "sorned": 629, "sorned1": 6218},
+//   {"period": "2011-09", "licensed": 3269, "sorned": 618, "sorned1": 6218},
+//   {"period": "2011-10", "licensed": 3269, "sorned": 618, "sorned1": 6218},
+//   {"period": "2011-11", "licensed": 3269, "sorned": 618, "sorned1": 6218},
+//   {"period": "2011-12", "licensed": 3351, "sorned": 629, "sorned1": 6218}
 
-var month_data = [
-  // {"period": "2012-10", "licensed": 3407, "sorned": 660},
-  {"period": "2011-01", "licensed": 3269, "sorned": 618, "sorned1": 6218},
-  {"period": "2011-02", "licensed": 3351, "sorned": 629, "sorned1": 6218},
-  {"period": "2011-03", "licensed": 3269, "sorned": 618, "sorned1": 6218},
-  {"period": "2011-04", "licensed": 3269, "sorned": 618, "sorned1": 6218},
-  {"period": "2011-05", "licensed": 3351, "sorned": 629, "sorned1": 6218},
-  {"period": "2011-06", "licensed": 3269, "sorned": 618, "sorned1": 6218},
-  {"period": "2011-07", "licensed": 3269, "sorned": 618, "sorned1": 6218},
-  {"period": "2011-08", "licensed": 3351, "sorned": 629, "sorned1": 6218},
-  {"period": "2011-09", "licensed": 3269, "sorned": 618, "sorned1": 6218},
-  {"period": "2011-10", "licensed": 3269, "sorned": 618, "sorned1": 6218},
-  {"period": "2011-11", "licensed": 3269, "sorned": 618, "sorned1": 6218},
-  {"period": "2011-12", "licensed": 3351, "sorned": 629, "sorned1": 6218}
-
-  // {"period": "2010-08", "licensed": 3246, "sorned": 661},
-  // {"period": "2010-05", "licensed": 3257, "sorned": 667},
-  // {"period": "2010-03", "licensed": 3248, "sorned": 627},
-  // {"period": "2010-01", "licensed": 3171, "sorned": 660},
-  // {"period": "2009-12", "licensed": 3171, "sorned": 676},
-  // {"period": "2009-10", "licensed": 3201, "sorned": 656},
-  // {"period": "2009-09", "licensed": 3215, "sorned": 622}
-  ];
-  Morris.Line({
-  	element: 'graph1',
-  	data: month_data,
-  	xkey: 'period',
-  	ykeys: ['licensed', 'sorned', "sorned1"],
-  	labels: ['Licensed', 'SORN', 'Madhu'],
-  	smooth: false
-  });
+//   // {"period": "2010-08", "licensed": 3246, "sorned": 661},
+//   // {"period": "2010-05", "licensed": 3257, "sorned": 667},
+//   // {"period": "2010-03", "licensed": 3248, "sorned": 627},
+//   // {"period": "2010-01", "licensed": 3171, "sorned": 660},
+//   // {"period": "2009-12", "licensed": 3171, "sorned": 676},
+//   // {"period": "2009-10", "licensed": 3201, "sorned": 656},
+//   // {"period": "2009-09", "licensed": 3215, "sorned": 622}
+//   ];
+//   Morris.Line({
+//   	element: 'graph1',
+//   	data: month_data,
+//   	xkey: 'period',
+//   	ykeys: ['licensed', 'sorned', "sorned1"],
+//   	labels: ['Licensed', 'SORN', 'Madhu'],
+//   	smooth: false
+//   });
 
   Morris.Donut({
   	element: 'graph',
