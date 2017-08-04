@@ -23,6 +23,10 @@
 <!--     <div id="title_area">
       <%#= link_to image_tag('banner.png'), home_path %>
     </div> -->
+    
+<div class="container">
+  <!-- Push Wrapper -->
+  <div class="mp-pusher" id="mp-pusher">
 
     <%= render :partial => "partials/nav4" %>
 
@@ -31,14 +35,43 @@
 
 
 
-    <div class="row">
+<!--     <div class="row">
       <div class="small-12 columns" id="main_content">
-        <%= render :partial => "partials/flash" %>
-        <%= yield %>
+        <%#= render :partial => "partials/flash" %>
+        <%#= yield %>
       </div>
-    </div>
+    </div> -->
 
+    <div class="scroller" >
+      <!-- this is for emulating position fixed of the nav -->
+      <div class="scroller-inner" id="title_area">
+        <div class="content clearfix">
+          <div class="block block-40 clearfix">
+            <p><a href="#" id="trigger" class="menu-trigger">Menu</a></p>
+          </div>
+        </div>
+        <div class="content clearfix">
+          <div class="row">
+            <div class="small-12 columns" id="main_content">
+              <%= render :partial => "partials/flash" %>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div> <!--/scroller-inner -->
+    </div><!-- /scroller -->
 
+      </div>
+  <!-- /pusher -->
+</div>
+<!-- /container -->
+<script src="js/classie.js"></script>
+<script src="js/mlpushmenu.js"></script>
+<script>
+new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+</script>
+<!-- </div>
+</div> -->
 
     <footer>
       <div class="small-12 columns" id="footer">
