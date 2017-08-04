@@ -1,4 +1,25 @@
-<%= render partial: "partials/index_structure_4", locals: {model_name: "item", 
+<%#= render partial: "partials/index_structure_4", locals: {model_name: "item", 
                                                          primary: "active_items", 
                                                          secondary: nil,
                                                          sidebar: "inactive_items"} %>
+
+
+<!-- <div class="row"> -->
+  <!-- <div class="small-8 columns"> -->
+    <!-- primary partial gets displayed here in main div -->
+    <%= render partial: "items/active_items" %>
+    <!-- sometimes we want another partial below -->
+    
+  <!-- </div> -->
+  <div class="small-4 columns">
+    <!-- render the sidebar, if it exists -->
+    <%= render partial: "items/inactive_items" unless @inactive_items.blank? %>
+  </div>
+<!-- </div> -->
+
+<!-- Add a button for new instances of object -->
+<%= link_to(eval("new_item_path"), class: "button radius") do %>
+  <!-- <i class="fa fa-plus"></i> -->
+  &nbsp;Add a New Item
+<% end %>
+

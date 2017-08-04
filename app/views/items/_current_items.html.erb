@@ -29,27 +29,40 @@
 </table> -->
 
 <%items.each do |item| %>
-
+<% unless item == items.last %>
 <div class="small-4 columns">
-<!-- <div class="column column-block"> -->
- <div class="card-user-profile">
-   <% if !(item.photo_url.nil?) %>
-   <p><%= image_tag item.photo_url %></p>
-   <%else%>
-   <%= image_tag 'img_not_available.png' %>
-   <% end %>
-   <!-- <img class="card-user-profile-img" src="https://images.pexels.com/photos/5439/earth-space.jpg?h=350&auto=compress&cs=tinysrgb" alt="picture of space" /> -->
-   <div class="card-user-profile-content card-section">
-    <div class="card-user-profile-avatar">
-      <img src="https://pbs.twimg.com/profile_images/422887689612820482/sZtHMJu5.png" alt="picture of yeti" />
+  <% else %>
+  <div class="small-4 columns end">
+    <%end%>
+    <!-- <div class="column column-block"> -->
+    <div class="card-user-profile">
+     <% if !(item.photo_url.nil?) %>
+     <p><%= image_tag item.photo_url %></p>
+     <%else%>
+     <%= image_tag 'img_not_available.png' %>
+     <% end %>
+     <!-- <img class="card-user-profile-img" src="https://images.pexels.com/photos/5439/earth-space.jpg?h=350&auto=compress&cs=tinysrgb" alt="picture of space" /> -->
+     <div class="card-user-profile-content card-section">
+      <div class="card-user-profile-avatar">
+        <img src="https://pbs.twimg.com/profile_images/422887689612820482/sZtHMJu5.png" alt="picture of yeti" />
+      </div>
+      <p class="card-user-profile-name"><%= link_to item.name, item_path(item) %></p>
+      <p class="card-user-profile-status">Price: <%= number_to_currency item.current_price %> </p>
+      <p class="card-user-profile-info"> <%= item.description %> </p>
+      <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
+      <p class="card-user-profile-status">Inventory: <%= item.inventory_level %></p>
+      <%end%>
+      <!-- <button class="view-item button"><span>View</span> </button> -->
+      <%= link_to(item_path(item.id), class: 'button view-item') do %>
+        <span> View </span>
+      <% end %>
+      <%= link_to(add_item_path(item.id), class: 'button button-hover-addcart') do %>
+        <span>Add to cart</span><i class="fa fa-shopping-cart"></i>
+      <% end %>
+
+
+
     </div>
-    <p class="card-user-profile-name"><%= link_to item.name, item_path(item) %></p>
-    <p class="card-user-profile-status">Price: <%= number_to_currency item.current_price %> </p>
-    <p class="card-user-profile-info"> <%= item.description %> </p>
-    <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
-    <p class="card-user-profile-status">Inventory: <%= item.inventory_level %></p>
-     <%end%>
-   </div>
 
 <!--    <div class="card-user-profile-actions">
     <a href="#" class="card-user-profile-button button hollow">Follow</a>
