@@ -1,57 +1,73 @@
+
+  <h3><%= @item.name %></h3>
+
+
+    <p>
+      <%= @item.current_price.nil? ? 'N/A' : number_to_currency(@item.current_price) %>
+      / 
+      <% unless @item.active %> Inactive <% else %> Active <%end%>
+   
+
+
+    </p>
+
+    <%= link_to(add_item_path(@item.id), class: 'button button-hover-addcart') do %>
+        <span>Add to cart</span><i class="fa fa-shopping-cart"></i>
+      <% end %>
+
+
+
+
 <div class="row" id="show_item">
- <div class="small-5 columns">
+  <!-- <div class="small-2 columns"> -->
+  <!-- </div> -->
+ <div class="small-5 small-centered columns">
   <% if !(@item.photo_url.nil?) %>
-  <p><%= image_tag @item.photo_url %></p>
+  <center> <p><%= image_tag @item.photo_url %></p> </center>
   <%else%>
   <%= image_tag 'img_not_available.png' %>
   <% end %>
 </div>
+  <!-- <div class="small-4 columns"> -->
+  <!-- </div> -->
+</div> 
 
-<div class="small-7 columns">
-  <h3><%= @item.name %></h3>
+<div class="row">
+
+<div class="small-12 columns">
+<!--   <h3><%= @item.name %></h3> -->
   <!-- </div> -->
 
 
   <!-- </div> -->
-  <p>
-    <b>Active</b> 
-    <!-- <br> -->
-    <%= @item.active ? 'Yes' : 'No' %>
-  </p>
+
   <!-- <br> -->
   <p>
-    <b>Description</b> <br>
+   <center> <b>Description</b>  </center> <br> 
     <%= @item.description %>
   </p>
 </div>
 </div>
 
 <div class="row">
-  <div class="small-2 columns">
-    <p>
-      <b>Price</b> <br>
-      <%= @item.current_price.nil? ? 'N/A' : number_to_currency(@item.current_price) %>
-    </p>
-  </div>
+  <div class="small-4 small-centered columns">
 
-  <div class="small-2 columns">
-    <p>
-      <b>Category</b> <br>
-      <%= @item.category.capitalize %>
-    </p>
-  </div>
-  <div class="small-2 columns">
-    <p>
-      <b>Color</b> <br>
-      <%= @item.color.nil? ? 'N/A' : @item.color %>
-    </p>
-  </div>
-  <div class="small-2 columns end">
-    <p>
-      <b>Total weight</b> <br>
-      <%= @item.weight.nil? ? 'N/A' : @item.weight %> lbs.
-    </p>
-  </div>
+  <!-- <div class="small-2 columns"> -->
+    <center> <p>
+      <b>Category: </b> <%= @item.category.capitalize %>
+    </p> </center> 
+  <!-- </div> -->
+  <!-- <div class="small-2 columns"> -->
+       <center> <p>
+      <b>Color: </b> <%= @item.color.nil? ? 'N/A' : @item.color %>
+       </p> </center>
+  <!-- </div> -->
+  <!-- <div class="small-2 columns end"> -->
+       <center> <p>
+      <b>Total weight: </b> <%= @item.weight.nil? ? 'N/A' : @item.weight %> lbs.
+       </p> </center>
+  <!-- </div> -->
+</div>
 </div>
 
 <div class="row">
