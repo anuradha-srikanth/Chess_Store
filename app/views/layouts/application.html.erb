@@ -48,9 +48,17 @@
       <div class="scroller-inner" id="title_area">
         <div class="content clearfix topbar">
           <div class="block block-40 clearfix">
-            <p><a href="#" id="trigger" class="menu-trigger">Menu</a>
-            <a id="right">  <% if logged_in? %> <%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %> <%else%> <%= link_to "Log in | Sign Up", login_path%> <% end %></a> 
+            <p><a href="#" id="trigger" class="menu-trigger"></a>
+            <a id="right">  <% if logged_in? %> <%= link_to "|   Log Out   ", logout_path, class: 'right font-fix'%>
+
+              <%= link_to "Welcome, #{current_user.first_name}  |  ", user_path(current_user), class: 'right font-fix' %> <%else%> <%= link_to "Log in | Sign Up", login_path%> <% end %></a> 
+
+              <a href="carts"> <i class="fa fa-shopping-cart"></i> </a>
+              <!-- <a id="right"> <i class="fa fa-shopping-cart"></i> </a> -->
+              <!-- <%#= link_to %> <i class="fa fa-shopping-cart"> </i> <%#user_path(current_user) %> -->
             <!-- <a id="right"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>  </a> -->
+
+
             </p>
 
             <!-- <p id="right"> <a> Anu </a> </p> -->

@@ -306,6 +306,7 @@ html, body, .container, .scroller {
 
 
 /*own*/
-#right{
-float: right;
+.font-fix{
+	/*float: right;*/
+	font-size: 0.75rem;
 }

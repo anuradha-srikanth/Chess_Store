@@ -6,13 +6,17 @@ class CartsController < ApplicationController
 	def new
 		session[:cart] ||= Hash.new
     redirect_to root_path
-	end
+  end
 
-	def clear
-		session[:cart] = Hash.new
-	end
+  def clear
+    session[:cart] = Hash.new
+  end
 
-	def add_item
+  def destroy
+    session[:cart] = nil
+  end
+
+  def add_item
     if session[:cart].keys.include?(params[:id])
       # if item in cart, increment quantity by 1
       session[:cart][params[:id]] += 1
@@ -42,7 +46,16 @@ class CartsController < ApplicationController
      @order_item = OrderItem.new(info)
      @order_items << @order_item
    end
-   @order_items 
+
+   @total = 0
+  return total if session[:cart].empty? # skip if cart empty...
+  session[:cart].each do |item_id, quantity|
+    info = {item_id: item_id, quantity: quantity}
+    order_item = OrderItem.new(info)
+    @total += order_item.subtotal
+  end
+  
+   # @order_items 
  end
 
  def show
