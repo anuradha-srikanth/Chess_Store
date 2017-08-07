@@ -7,6 +7,7 @@
   <!-- <title><%#= content_for?(:title) ? yield(:title) : "foundation-rails" %></title> -->
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Lato" rel="stylesheet">
   <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Karla|Roboto:700" rel="stylesheet">
 <script src="https://use.fontawesome.com/a36b0d8eac.js"></script>
   <title>Chess Warehouse :: <%= controller.controller_name.capitalize %></title>
   <%#= stylesheet_link_tag    "normalize" %>
@@ -45,10 +46,15 @@
     <div class="scroller" >
       <!-- this is for emulating position fixed of the nav -->
       <div class="scroller-inner" id="title_area">
-        <div class="content clearfix">
+        <div class="content clearfix topbar">
           <div class="block block-40 clearfix">
-            <p><a href="#" id="trigger" class="menu-trigger">Menu</a></p>
-          </div>
+            <p><a href="#" id="trigger" class="menu-trigger">Menu</a>
+            <a id="right">  <% if logged_in? %> <%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %> <%else%> <%= link_to "Log in | Sign Up", login_path%> <% end %></a> 
+            <!-- <a id="right"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>  </a> -->
+            </p>
+
+            <!-- <p id="right"> <a> Anu </a> </p> -->
+         </div>
         </div>
         <div class="content clearfix">
           <div class="row">
@@ -57,7 +63,7 @@
               <%= yield %>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
       </div> <!--/scroller-inner -->
     </div><!-- /scroller -->
 

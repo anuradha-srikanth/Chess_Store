@@ -1,20 +1,18 @@
 
   <h3><%= @item.name %></h3>
 
-
     <p>
       <%= @item.current_price.nil? ? 'N/A' : number_to_currency(@item.current_price) %>
       / 
       <% unless @item.active %> Inactive <% else %> Active <%end%>
-   
-
 
     </p>
 
-    <%= link_to(add_item_path(@item.id), class: 'button button-hover-addcart') do %>
+      <% if logged_in? %>
+        <%= link_to(add_item_path(@item.id), class: 'button button-hover-addcart') do %>
         <span>Add to cart</span><i class="fa fa-shopping-cart"></i>
+        <% end %>
       <% end %>
-
 
 
 
@@ -35,7 +33,7 @@
 <div class="row">
 
 <div class="small-12 columns">
-<!--   <h3><%= @item.name %></h3> -->
+<!-- <h3><%#= @item.name %></h3> -->
   <!-- </div> -->
 
 

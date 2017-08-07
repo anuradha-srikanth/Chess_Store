@@ -21,6 +21,7 @@ class CartsController < ApplicationController
       session[:cart][params[:id]] = 1
     end
     redirect_to "/items"
+    flash[:notice] = "Successfully added item to cart."
   end
 
 
@@ -90,8 +91,6 @@ def grand_total
   end
   total
 end 
-
-
 
 
 end

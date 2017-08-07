@@ -1,0 +1,33 @@
+<div class="card-user-profile">
+    <div class="pic">
+    <%= link_to(item_path(@item.id)) do %>
+    <% if !(@item.photo_url.nil?) %>
+       <p><%= image_tag @item.photo_url %></p>
+    <%else%>
+       <%= image_tag 'img_not_available.png' %>
+    <% end %>
+    <% end %>
+    </div>
+    <div class="card-user-profile-content card-section">
+      <div class="card-user-profile-avatar">
+        <img src="https://pbs.twimg.com/profile_images/422887689612820482/sZtHMJu5.png" alt="picture of yeti" />
+      </div>
+      <p class="card-user-profile-name"><%= link_to @item.name, item_path(@item) %> <%= number_to_currency @item.current_price %> </p>
+      <!-- <p class="card-user-profile-status">Price: <%= number_to_currency @item.current_price %> </p> -->
+      <p class="card-user-profile-info"> <%= @item.description %> </p>
+      <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
+      <p class="card-user-profile-status">Inventory: <%= @item.inventory_level %></p>
+      <%end%> 
+      <% if logged_in? %>
+        <%= link_to(add_item_path(@item.id), class: 'button button-hover-addcart small-12 columns') do %>
+        <span>Add to cart</span><i class="fa fa-shopping-cart"></i>
+        <% end %>
+        <% else %>
+          <%= link_to(item_path(@item.id), class: 'button view-item small-12 columns') do %>
+      <span> View </span>
+      <% end %>
+      <% end %>
+
+    </div>
+
+</div>

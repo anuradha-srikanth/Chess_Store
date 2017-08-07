@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
     		# if saved to database
-    		session[:user_id] = @user.id
+    		# session[:user_id] = @user.id
             #session[:cart] =  ||= Hash.new
             flash[:notice] = "Changed the user params #{@user.name}."
     		#@item = @item_price.item
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-    	params.require(:user).permit(:first_name, :last_name, :email, :role, :password, :password_confirmation, :active)
+    	params.require(:user).permit(:first_name, :last_name, :email, :username, :role, :password, :password_confirmation, :active)
     end 
 
 
