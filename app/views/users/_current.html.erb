@@ -1,29 +1,44 @@
 <% unless users.nil? || users.empty? %>
 
-<div class="people-you-might-know">
-  <div class="add-people-header">
+<!-- <div class="people-you-might-know"> -->
+<!--   <div class="add-people-header">
     <h6 class="header-title">
       People You Might Know
     </h6>
-  </div>
+  </div> -->
+  <div class='row'>
   <% users.each do |user| %>
+  <div class="people-you-might-know small-12 medium-6 large-4 column">
   <div class="row add-people-section">
-    <div class="small-12 medium-6 columns about-people">
-      <div class="about-people-avatar">
+    <div class="columns about-people">
+<!--       <div class="about-people-avatar">
         <img class="avatar-image" src="https://i.imgur.com/UPVxPjb.jpg" alt="Kishore Kumar">
-      </div>
+      </div> -->
       <div class="about-people-author">
         <p class="author-name">
           <%= link_to user.proper_name, user_path(user) %>
         </p>
-        <p class="author-location">
+
+        <p> <%= user.role.capitalize %> </p>
+        <p> <i class="fa fa-phone" aria-hidden="true"></i>
+        <%= user.phone.nil? ? 'N/A' : (user.phone) %> </p>
+
+        <p> <i class="fa fa-envelope" aria-hidden="true"></i>
+        <%= user.email.nil? ? 'N/A' : (user.email) %> </p>
+
+        <p> <i class="fa fa-user" aria-hidden="true"></i>
+        <%= user.username.nil? ? 'N/A' : (user.username) %> </p>
+
+
+
+        <!-- <p class="author-location">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <%= user.email %>
+          <%#= user.email %>
         </p>
         <p class="author-location">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <%= user.phone.nil? ? 'N/A' : (user.phone) %>
-        </p> 
+          <%#= user.phone.nil? ? 'N/A' : (user.phone) %>
+        </p>  -->
     </div>    
   </div>
   <div class="small-12 medium-6 columns add-friend">
@@ -38,6 +53,8 @@
       </button>
     </div>
   </div>
+</div>
+
 </div>
 <% end %>
 <!-- <div class="view-more-people">

@@ -190,6 +190,10 @@ a:hover, a:focus {
 	width: 60%;
 }
 
+.block-100 {
+	width: 100%;
+}
+
 .block p {
 	margin: 0;
 	padding: 0 1em 0.6em;
