@@ -58,8 +58,6 @@ class OrdersController < ApplicationController
 
 	def view_order
 		@order_items = Order.where(id: params[:id]).first.order_items.all
-
-
 	end
 
 	def add_from_cart(order)
@@ -68,16 +66,16 @@ class OrdersController < ApplicationController
 			OrderItem.create(info)
 		end
 		 # redirect_to "/orders/" + @order.id
-		end
-
-		private
-		def set_order
-			@order = Order.find(params[:id])
-		end
-
-		def order_params
-			params.require(:order).permit(:order_id, :date, :school_id, :user_id, :grand_total, :payment_receipt)
-		end
-
-
 	end
+
+	private
+
+	def set_order
+		@order = Order.find(params[:id])
+	end
+
+	def order_params
+		params.require(:order).permit(:order_id, :date, :school_id, :user_id, :grand_total, :payment_receipt)
+	end
+
+end

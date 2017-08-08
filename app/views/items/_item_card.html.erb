@@ -2,9 +2,9 @@
     <div class="pic">
     <%= link_to(item_path(@item.id)) do %>
     <% if !(@item.photo_url.nil?) %>
-       <p><%= image_tag @item.photo_url %></p>
+       <p><%= image_tag @item.photo_url, class: 'resize-img' %></p>
     <%else%>
-       <%= image_tag 'img_not_available.png' %>
+       <%= image_tag 'img_not_available.png', class: 'resize-img' %>
     <% end %>
     <% end %>
     </div>

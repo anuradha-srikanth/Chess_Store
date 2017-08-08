@@ -29,6 +29,8 @@ class Order < ActiveRecord::Base
 
   # Validations
   # validates_date :date  # not essential, but permittable
+  validates :school_id, presence: true
+  validates :user_id, presence: true
   validates_numericality_of :grand_total, greater_than_or_equal_to: 0, allow_blank: true
   validate :user_is_active_in_system
   validate :school_is_active_in_system

@@ -121,3 +121,8 @@
 #price_small{
   font-size: 1em;
 }
+
+.resize-img{
+  width:100%;
+  height: 100%;
+}
