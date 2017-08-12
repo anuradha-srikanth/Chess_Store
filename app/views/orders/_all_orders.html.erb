@@ -2,14 +2,23 @@
   <h4>No orders at this time.</h4>
 <% else %>
   <h4>Active Orders</h4>
-  <table class="table table-striped">
-    <thead>
+  <!-- <table class="table table-striped"> -->
+<!--     <thead>
       <tr>
         <th width="225">School</th>
         <th width="150">Date</th>
         <th width="150">Grand Total</th>
       </tr>
-    </thead>
+    </thead> -->
+    <table class="table-expand">
+  <thead>
+    <tr class="table-expand-row">
+      <th width="200">Date</th>
+      <th>Number of items</th>
+      <th class="text-right" width="150">Amount</th>
+      <th width="150">Status</th>
+    </tr>
+  </thead>
     <tbody>
     <%= render 'list_of_orders' %>
     </tbody>

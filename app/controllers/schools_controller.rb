@@ -3,9 +3,9 @@ class SchoolsController < ApplicationController
 
     def index
       @active_schools = School.active.alphabetical.to_a
-  end
+    end
 
-  def show
+    def show
         # @active_schools = School.active.alphabetical.to_a
     end
 
@@ -26,20 +26,6 @@ class SchoolsController < ApplicationController
     		render action: 'new'
     	end
     end
-
-    # def edit
-    # 	@user = current_user
-    # end
-
-    # def update
-    # 	if @school.update_attributes(user_params)
-    # 		flash[:notice] = "Successfully updated #{@user.name}."
-    # 		redirect_to (@user)
-    # 	else
-    # 		render action: 'edit'
-    # 	end
-    # end
-
 
     private
     def set_school

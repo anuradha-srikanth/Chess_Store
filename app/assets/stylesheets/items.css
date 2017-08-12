@@ -118,8 +118,9 @@
   letter-spacing: 1px;
 }
 
-#price_small{
-  font-size: 1em;
+#price-small{
+      font-size: 0.9rem;
+    font-weight: 400;
 }
 
 .resize-img{

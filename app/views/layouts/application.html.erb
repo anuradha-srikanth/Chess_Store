@@ -9,6 +9,9 @@
   <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Karla|Roboto:700" rel="stylesheet">
 <script src="https://use.fontawesome.com/a36b0d8eac.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>   $(document).foundation();  </script>
+
   <title>Chess Warehouse :: <%= controller.controller_name.capitalize %></title>
   <%#= stylesheet_link_tag    "normalize" %>
   <%= stylesheet_link_tag    "application" %>
@@ -24,7 +27,52 @@
 <!--     <div id="title_area">
       <%#= link_to image_tag('banner.png'), home_path %>
     </div> -->
-    
+
+    <div class="login-box">
+  <div class="row collapse expanded">
+    <div class="small-12 medium-6 column small-order-2 medium-order-1">
+      <div class="login-box-form-section">
+        <h1 class="login-box-title">Sign up</h1>
+        <input class="login-box-input" type="text" name="username" placeholder="Username" />
+        <input class="login-box-input" type="email" name="email" placeholder="E-mail" />
+        <input class="login-box-input" type="password" name="password" placeholder="Password" />
+        <input class="login-box-input" type="password" name="password2" placeholder="Retype password" />
+        <input class="login-box-submit-button" type="submit" name="signup_submit" value="Sign me up" />
+      </div>
+      <div class="or">OR</div>
+    </div>
+    <div class="small-12 medium-6 column small-order-1 medium-order-2 login-box-social-section">
+      <div class="login-box-social-section-inner">
+        <span class="login-box-social-headline">Sign in with<br />your social network</span>
+        <a class="login-box-social-button-facebook">Log in with facebook</a>
+        <a class="login-box-social-button-twitter">Log in with Twitter</a>
+        <a class="login-box-social-button-google">Log in with Google+</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script> console.log('this should load second'); </script>
+<a href="\items" data-reveal-id="myModal">Click Me For A Modal</a>
+
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Awesome. I have it.</h2>
+  <p class="lead">Your couch.  It is mine.</p>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+    <!-- <a href="#" data-reveal-id="myModal">Click Me For A Modal</a>
+
+    <div id="myModal" class="reveal-modal" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="display: none; opacity: 1; visibility: hidden; top: 441px;">
+  <h2 id="modalTitle">Awesome. I have it.</h2>
+  <p class="lead">Your couch.  It is mine.</p>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <a class="close-reveal-modal" aria-label="Close">×</a>
+</div> -->
+
+
+
+
 <div class="container">
   <!-- Push Wrapper -->
   <div class="mp-pusher" id="mp-pusher">
@@ -49,9 +97,16 @@
         <div class="content clearfix topbar">
           <div class="block block-100 clearfix">
             <p><a href="#" id="trigger" class="menu-trigger"></a>
-            <a id="right">  <% if logged_in? %> <%= link_to "|   Log Out   ", logout_path, class: 'right font-fix'%>
+            <a id="right">  
+            <% if logged_in? %> 
+            <%= link_to "|   Log Out   ", logout_path, class: 'right font-fix'%>
+              <%= link_to "Welcome, #{current_user.first_name}  |  ", user_path(current_user), class: 'right font-fix' %> 
+            <%else%> 
+            <%= link_to "|   Sign Up   ", logout_path, class: 'right font-fix'%>
+            <%= link_to "Log In |  ", login_path, class: 'right font-fix'%>              
+            <% end %>
+            </a> 
 
-              <%= link_to "Welcome, #{current_user.first_name}  |  ", user_path(current_user), class: 'right font-fix' %> <%else%> <%= link_to "Log in | Sign Up", login_path%> <% end %></a> 
 
               <a href="carts"> <i class="fa fa-shopping-cart"></i> </a>
               <!-- <a id="right"> <i class="fa fa-shopping-cart"></i> </a> -->
@@ -65,7 +120,7 @@
          </div>
         </div>
         <div class="content clearfix">
-          <div class="row">
+          <!-- <div class="row"> -->
             <!-- <div class="small-12 columns" id="main_content"> -->
               <%= render :partial => "partials/flash" %>
               <%= yield %>
@@ -92,7 +147,16 @@ new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( '
         <%= render partial: 'partials/footer' %>
       </div>
     </footer> 
+<!-- <script src="classie.js"> </script> -->
+<!-- <script src="mlpushmenu.js"> </script> -->
+<script>
+$('[data-open-details]').click(function (e) {
+  e.preventDefault();
+  $(this).next().toggleClass('is-active');
+  $(this).toggleClass('is-active');
+});
 
+</script>
     
   </body>
   </html>

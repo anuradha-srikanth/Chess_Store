@@ -8,9 +8,12 @@
   <%= f.input :street_2, input_html: {class: "avg"} %>
   <%= f.input :city, input_html: {class: "avg"} %>
   <!-- <%#= f.input :state, input_html: {class: "avg"} %> -->
-  <!-- <%#= f.input :state, :collection => ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connectict','Delaware','District of Columbia ','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','NC','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin ','Wyoming'] %> -->
+  <!-- <%#= f.input :state, :collection => 'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connectict','Delaware','District of Columbia ','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','NC','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin ','Wyoming' %> -->
 
-  <%= f.input :state, :collection => ['PA'] %>
+<!--   ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO','MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
+ -->
+
+  <%= f.input :state, :collection => ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO','CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO','MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD','TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'] %>
 
   <%= f.input :zip, input_html: {class: "avg"} %>
   <%= f.input :min_grade, input_html: {class: "avg"} %>

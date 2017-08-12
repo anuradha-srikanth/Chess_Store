@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
 	def my_orders
 		@user = session[:user_id]
 		@all_orders = Order.where(user_id: @user).all.chronological
-		@unshipped = Order.find.where(user_id: @user).all.not_shipped
+		@unshipped = Order.where(user_id: @user).all.not_shipped
 	end
 
 	def view_order

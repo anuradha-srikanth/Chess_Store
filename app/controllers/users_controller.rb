@@ -43,6 +43,14 @@ class UsersController < ApplicationController
     	end
     end
 
+     def destroy
+        if @user.destroy
+            flash[:notice] = "Successfully removed"
+        else
+            flash[:error] = "Could not remove user"
+        end
+    end
+
 
     def view_employees
         @employees = User.employees.alphabetical.paginate(:page => params[:page]).per_page(10)

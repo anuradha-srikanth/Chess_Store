@@ -12,7 +12,7 @@
       <div class="card-user-profile-avatar">
         <img src="https://pbs.twimg.com/profile_images/422887689612820482/sZtHMJu5.png" alt="picture of yeti" />
       </div>
-      <p class="card-user-profile-name"><%= link_to @item.name, item_path(@item) %> <%= number_to_currency @item.current_price %> </p>
+      <p class="card-user-profile-name"> <%= link_to @item.name, item_path(@item) %> <span id="price-small"><%= number_to_currency @item.current_price %></span> </p>
       <!-- <p class="card-user-profile-status">Price: <%= number_to_currency @item.current_price %> </p> -->
       <p class="card-user-profile-info"> <%= @item.description %> </p>
       <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager" || current_user.role == "shipper") %>
